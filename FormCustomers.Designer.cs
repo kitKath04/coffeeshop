@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCustomers));
             this.btnArchivedOrders = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
@@ -39,22 +40,27 @@
             this.customersSidebar = new System.Windows.Forms.GroupBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.labelCustomers = new System.Windows.Forms.Label();
-            this.tableCustomers = new System.Windows.Forms.DataGridView();
-            this.columnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPhoneNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.customersTable = new System.Windows.Forms.DataGridView();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phonenoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastloginColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exportbutton = new System.Windows.Forms.Button();
+            this.namecomboBox = new System.Windows.Forms.ComboBox();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.searchLabel = new System.Windows.Forms.Label();
+            this.searchtextBox = new System.Windows.Forms.TextBox();
+            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.customersSidebar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersTable)).BeginInit();
             this.SuspendLayout();
             // 
             // btnArchivedOrders
             // 
-            this.btnArchivedOrders.Location = new System.Drawing.Point(41, 542);
+            this.btnArchivedOrders.Location = new System.Drawing.Point(41, 567);
             this.btnArchivedOrders.Name = "btnArchivedOrders";
             this.btnArchivedOrders.Size = new System.Drawing.Size(170, 36);
             this.btnArchivedOrders.TabIndex = 7;
@@ -74,7 +80,7 @@
             // 
             // btnEmployees
             // 
-            this.btnEmployees.Location = new System.Drawing.Point(41, 465);
+            this.btnEmployees.Location = new System.Drawing.Point(41, 490);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.Size = new System.Drawing.Size(170, 36);
             this.btnEmployees.TabIndex = 5;
@@ -84,7 +90,7 @@
             // 
             // btnPayments
             // 
-            this.btnPayments.Location = new System.Drawing.Point(41, 239);
+            this.btnPayments.Location = new System.Drawing.Point(41, 264);
             this.btnPayments.Name = "btnPayments";
             this.btnPayments.Size = new System.Drawing.Size(170, 36);
             this.btnPayments.TabIndex = 4;
@@ -94,7 +100,7 @@
             // 
             // btnCustomers
             // 
-            this.btnCustomers.Location = new System.Drawing.Point(41, 388);
+            this.btnCustomers.Location = new System.Drawing.Point(41, 413);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(170, 36);
             this.btnCustomers.TabIndex = 3;
@@ -104,7 +110,7 @@
             // 
             // btnProducts
             // 
-            this.btnProducts.Location = new System.Drawing.Point(41, 314);
+            this.btnProducts.Location = new System.Drawing.Point(41, 339);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(170, 36);
             this.btnProducts.TabIndex = 2;
@@ -114,7 +120,7 @@
             // 
             // btnOrders
             // 
-            this.btnOrders.Location = new System.Drawing.Point(41, 161);
+            this.btnOrders.Location = new System.Drawing.Point(41, 186);
             this.btnOrders.Name = "btnOrders";
             this.btnOrders.Size = new System.Drawing.Size(170, 36);
             this.btnOrders.TabIndex = 1;
@@ -124,7 +130,7 @@
             // 
             // btnDashboard
             // 
-            this.btnDashboard.Location = new System.Drawing.Point(41, 87);
+            this.btnDashboard.Location = new System.Drawing.Point(41, 112);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(170, 36);
             this.btnDashboard.TabIndex = 0;
@@ -135,6 +141,7 @@
             // customersSidebar
             // 
             this.customersSidebar.BackColor = System.Drawing.Color.SteelBlue;
+            this.customersSidebar.Controls.Add(this.coffeeshoplabel);
             this.customersSidebar.Controls.Add(this.btnArchivedOrders);
             this.customersSidebar.Controls.Add(this.btnLogout);
             this.customersSidebar.Controls.Add(this.btnEmployees);
@@ -153,9 +160,9 @@
             // 
             this.btnEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(1121, 100);
+            this.btnEdit.Location = new System.Drawing.Point(1089, 79);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(49, 23);
+            this.btnEdit.Size = new System.Drawing.Size(70, 30);
             this.btnEdit.TabIndex = 20;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -163,91 +170,15 @@
             // 
             // labelCustomers
             // 
-            this.labelCustomers.AutoSize = true;
-            this.labelCustomers.Font = new System.Drawing.Font("Microsoft JhengHei UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCustomers.Location = new System.Drawing.Point(280, 39);
+            this.labelCustomers.Font = new System.Drawing.Font("Microsoft JhengHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomers.Image = ((System.Drawing.Image)(resources.GetObject("labelCustomers.Image")));
+            this.labelCustomers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelCustomers.Location = new System.Drawing.Point(286, 24);
             this.labelCustomers.Name = "labelCustomers";
-            this.labelCustomers.Size = new System.Drawing.Size(99, 22);
+            this.labelCustomers.Size = new System.Drawing.Size(161, 48);
             this.labelCustomers.TabIndex = 19;
             this.labelCustomers.Text = "Customers";
-            // 
-            // tableCustomers
-            // 
-            this.tableCustomers.AllowUserToDeleteRows = false;
-            this.tableCustomers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.tableCustomers.BackgroundColor = System.Drawing.Color.White;
-            this.tableCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnID,
-            this.columnName,
-            this.columnEmail,
-            this.columnPhoneNo,
-            this.columnLastLogin,
-            this.columnStatus,
-            this.columnAction});
-            this.tableCustomers.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.tableCustomers.Location = new System.Drawing.Point(284, 74);
-            this.tableCustomers.Name = "tableCustomers";
-            this.tableCustomers.RowHeadersWidth = 51;
-            this.tableCustomers.RowTemplate.Height = 24;
-            this.tableCustomers.Size = new System.Drawing.Size(958, 584);
-            this.tableCustomers.TabIndex = 18;
-            // 
-            // columnID
-            // 
-            this.columnID.FillWeight = 0.2126608F;
-            this.columnID.HeaderText = "ID";
-            this.columnID.MinimumWidth = 100;
-            this.columnID.Name = "columnID";
-            this.columnID.Width = 125;
-            // 
-            // columnName
-            // 
-            this.columnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnName.FillWeight = 458.4813F;
-            this.columnName.HeaderText = "Name";
-            this.columnName.MinimumWidth = 130;
-            this.columnName.Name = "columnName";
-            // 
-            // columnEmail
-            // 
-            this.columnEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnEmail.FillWeight = 0.7174977F;
-            this.columnEmail.HeaderText = "Email";
-            this.columnEmail.MinimumWidth = 130;
-            this.columnEmail.Name = "columnEmail";
-            // 
-            // columnPhoneNo
-            // 
-            this.columnPhoneNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnPhoneNo.FillWeight = 4.472073F;
-            this.columnPhoneNo.HeaderText = "Phone No.";
-            this.columnPhoneNo.MinimumWidth = 130;
-            this.columnPhoneNo.Name = "columnPhoneNo";
-            // 
-            // columnLastLogin
-            // 
-            this.columnLastLogin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnLastLogin.FillWeight = 27.87559F;
-            this.columnLastLogin.HeaderText = "Last Login";
-            this.columnLastLogin.MinimumWidth = 130;
-            this.columnLastLogin.Name = "columnLastLogin";
-            // 
-            // columnStatus
-            // 
-            this.columnStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnStatus.FillWeight = 173.7492F;
-            this.columnStatus.HeaderText = "Status";
-            this.columnStatus.MinimumWidth = 130;
-            this.columnStatus.Name = "columnStatus";
-            // 
-            // columnAction
-            // 
-            this.columnAction.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnAction.FillWeight = 34.49162F;
-            this.columnAction.HeaderText = "Action";
-            this.columnAction.MinimumWidth = 130;
-            this.columnAction.Name = "columnAction";
+            this.labelCustomers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnDelete
             // 
@@ -255,12 +186,155 @@
             this.btnDelete.BackColor = System.Drawing.Color.Red;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDelete.Location = new System.Drawing.Point(1172, 100);
+            this.btnDelete.Location = new System.Drawing.Point(1165, 79);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(61, 23);
+            this.btnDelete.Size = new System.Drawing.Size(70, 30);
             this.btnDelete.TabIndex = 21;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // customersTable
+            // 
+            this.customersTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.customersTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.customersTable.ColumnHeadersHeight = 29;
+            this.customersTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idColumn,
+            this.nameColumn,
+            this.emailColumn,
+            this.phonenoColumn,
+            this.lastloginColumn,
+            this.statusColumn});
+            this.customersTable.Location = new System.Drawing.Point(290, 122);
+            this.customersTable.Name = "customersTable";
+            this.customersTable.RowHeadersWidth = 51;
+            this.customersTable.Size = new System.Drawing.Size(945, 575);
+            this.customersTable.TabIndex = 0;
+            // 
+            // idColumn
+            // 
+            this.idColumn.HeaderText = "ID";
+            this.idColumn.MinimumWidth = 6;
+            this.idColumn.Name = "idColumn";
+            // 
+            // nameColumn
+            // 
+            this.nameColumn.HeaderText = "Name";
+            this.nameColumn.MinimumWidth = 6;
+            this.nameColumn.Name = "nameColumn";
+            // 
+            // emailColumn
+            // 
+            this.emailColumn.HeaderText = "Email";
+            this.emailColumn.MinimumWidth = 6;
+            this.emailColumn.Name = "emailColumn";
+            // 
+            // phonenoColumn
+            // 
+            this.phonenoColumn.HeaderText = "Phone No.";
+            this.phonenoColumn.MinimumWidth = 6;
+            this.phonenoColumn.Name = "phonenoColumn";
+            // 
+            // lastloginColumn
+            // 
+            this.lastloginColumn.HeaderText = "Last Login";
+            this.lastloginColumn.MinimumWidth = 6;
+            this.lastloginColumn.Name = "lastloginColumn";
+            // 
+            // statusColumn
+            // 
+            this.statusColumn.HeaderText = "Status";
+            this.statusColumn.MinimumWidth = 6;
+            this.statusColumn.Name = "statusColumn";
+            // 
+            // exportbutton
+            // 
+            this.exportbutton.BackColor = System.Drawing.Color.Black;
+            this.exportbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.exportbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.exportbutton.Image = ((System.Drawing.Image)(resources.GetObject("exportbutton.Image")));
+            this.exportbutton.Location = new System.Drawing.Point(1044, 75);
+            this.exportbutton.Name = "exportbutton";
+            this.exportbutton.Size = new System.Drawing.Size(39, 34);
+            this.exportbutton.TabIndex = 22;
+            this.exportbutton.UseVisualStyleBackColor = false;
+            // 
+            // namecomboBox
+            // 
+            this.namecomboBox.FormattingEnabled = true;
+            this.namecomboBox.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z"});
+            this.namecomboBox.Location = new System.Drawing.Point(671, 85);
+            this.namecomboBox.Name = "namecomboBox";
+            this.namecomboBox.Size = new System.Drawing.Size(183, 24);
+            this.namecomboBox.TabIndex = 39;
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(601, 87);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(52, 18);
+            this.nameLabel.TabIndex = 38;
+            this.nameLabel.Text = "Name:";
+            // 
+            // searchLabel
+            // 
+            this.searchLabel.AutoSize = true;
+            this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.searchLabel.Location = new System.Drawing.Point(290, 87);
+            this.searchLabel.Name = "searchLabel";
+            this.searchLabel.Size = new System.Drawing.Size(59, 18);
+            this.searchLabel.TabIndex = 37;
+            this.searchLabel.Text = "Search:";
+            this.searchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // searchtextBox
+            // 
+            this.searchtextBox.Location = new System.Drawing.Point(365, 86);
+            this.searchtextBox.Name = "searchtextBox";
+            this.searchtextBox.Size = new System.Drawing.Size(202, 22);
+            this.searchtextBox.TabIndex = 36;
+            // 
+            // coffeeshoplabel
+            // 
+            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
+            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
+            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
+            this.coffeeshoplabel.Name = "coffeeshoplabel";
+            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
+            this.coffeeshoplabel.TabIndex = 9;
+            this.coffeeshoplabel.Text = "Coffee Shop";
+            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FormCustomers
             // 
@@ -268,10 +342,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1274, 761);
+            this.Controls.Add(this.namecomboBox);
+            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.searchLabel);
+            this.Controls.Add(this.searchtextBox);
+            this.Controls.Add(this.exportbutton);
+            this.Controls.Add(this.customersTable);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.labelCustomers);
-            this.Controls.Add(this.tableCustomers);
             this.Controls.Add(this.customersSidebar);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -279,7 +358,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customers";
             this.customersSidebar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tableCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,14 +376,19 @@
         private System.Windows.Forms.GroupBox customersSidebar;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label labelCustomers;
-        private System.Windows.Forms.DataGridView tableCustomers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnPhoneNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLastLogin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnAction;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.DataGridView customersTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phonenoColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastloginColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusColumn;
+        private System.Windows.Forms.Button exportbutton;
+        private System.Windows.Forms.ComboBox namecomboBox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.TextBox searchtextBox;
+        private System.Windows.Forms.Label coffeeshoplabel;
     }
 }

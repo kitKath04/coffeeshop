@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPayments));
             this.paymentsSidebar = new System.Windows.Forms.GroupBox();
             this.btnArchivedOrders = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -39,20 +40,26 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.labelPayments = new System.Windows.Forms.Label();
-            this.tableCustomers = new System.Windows.Forms.DataGridView();
-            this.columnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPhoneNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentsTable = new System.Windows.Forms.DataGridView();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderidColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentmethodColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.searchtextBox = new System.Windows.Forms.TextBox();
+            this.searchLabel = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.statuscomboBox = new System.Windows.Forms.ComboBox();
+            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.paymentsSidebar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentsTable)).BeginInit();
             this.SuspendLayout();
             // 
             // paymentsSidebar
             // 
             this.paymentsSidebar.BackColor = System.Drawing.Color.SteelBlue;
+            this.paymentsSidebar.Controls.Add(this.coffeeshoplabel);
             this.paymentsSidebar.Controls.Add(this.btnArchivedOrders);
             this.paymentsSidebar.Controls.Add(this.btnLogout);
             this.paymentsSidebar.Controls.Add(this.btnEmployees);
@@ -69,7 +76,7 @@
             // 
             // btnArchivedOrders
             // 
-            this.btnArchivedOrders.Location = new System.Drawing.Point(41, 542);
+            this.btnArchivedOrders.Location = new System.Drawing.Point(41, 567);
             this.btnArchivedOrders.Name = "btnArchivedOrders";
             this.btnArchivedOrders.Size = new System.Drawing.Size(170, 36);
             this.btnArchivedOrders.TabIndex = 7;
@@ -89,7 +96,7 @@
             // 
             // btnEmployees
             // 
-            this.btnEmployees.Location = new System.Drawing.Point(41, 465);
+            this.btnEmployees.Location = new System.Drawing.Point(41, 490);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.Size = new System.Drawing.Size(170, 36);
             this.btnEmployees.TabIndex = 5;
@@ -99,7 +106,7 @@
             // 
             // btnPayments
             // 
-            this.btnPayments.Location = new System.Drawing.Point(41, 239);
+            this.btnPayments.Location = new System.Drawing.Point(41, 264);
             this.btnPayments.Name = "btnPayments";
             this.btnPayments.Size = new System.Drawing.Size(170, 36);
             this.btnPayments.TabIndex = 4;
@@ -109,7 +116,7 @@
             // 
             // btnCustomers
             // 
-            this.btnCustomers.Location = new System.Drawing.Point(41, 388);
+            this.btnCustomers.Location = new System.Drawing.Point(41, 413);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(170, 36);
             this.btnCustomers.TabIndex = 3;
@@ -119,7 +126,7 @@
             // 
             // btnProducts
             // 
-            this.btnProducts.Location = new System.Drawing.Point(41, 314);
+            this.btnProducts.Location = new System.Drawing.Point(41, 339);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(170, 36);
             this.btnProducts.TabIndex = 2;
@@ -129,7 +136,7 @@
             // 
             // btnOrders
             // 
-            this.btnOrders.Location = new System.Drawing.Point(41, 161);
+            this.btnOrders.Location = new System.Drawing.Point(41, 186);
             this.btnOrders.Name = "btnOrders";
             this.btnOrders.Size = new System.Drawing.Size(170, 36);
             this.btnOrders.TabIndex = 1;
@@ -139,7 +146,7 @@
             // 
             // btnDashboard
             // 
-            this.btnDashboard.Location = new System.Drawing.Point(41, 87);
+            this.btnDashboard.Location = new System.Drawing.Point(41, 112);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(170, 36);
             this.btnDashboard.TabIndex = 0;
@@ -151,9 +158,9 @@
             // 
             this.btnEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(1141, 100);
+            this.btnEdit.Location = new System.Drawing.Point(1165, 75);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(49, 23);
+            this.btnEdit.Size = new System.Drawing.Size(70, 30);
             this.btnEdit.TabIndex = 24;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -161,89 +168,129 @@
             // 
             // labelPayments
             // 
-            this.labelPayments.AutoSize = true;
-            this.labelPayments.Font = new System.Drawing.Font("Microsoft JhengHei UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPayments.Location = new System.Drawing.Point(282, 42);
+            this.labelPayments.Font = new System.Drawing.Font("Microsoft JhengHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPayments.Image = ((System.Drawing.Image)(resources.GetObject("labelPayments.Image")));
+            this.labelPayments.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelPayments.Location = new System.Drawing.Point(286, 28);
             this.labelPayments.Name = "labelPayments";
-            this.labelPayments.Size = new System.Drawing.Size(92, 22);
+            this.labelPayments.Size = new System.Drawing.Size(149, 41);
             this.labelPayments.TabIndex = 23;
             this.labelPayments.Text = "Payments";
+            this.labelPayments.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tableCustomers
+            // paymentsTable
             // 
-            this.tableCustomers.AllowUserToDeleteRows = false;
-            this.tableCustomers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.tableCustomers.BackgroundColor = System.Drawing.Color.White;
-            this.tableCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnID,
-            this.columnName,
-            this.columnEmail,
-            this.columnPhoneNo,
-            this.columnStatus,
-            this.columnAction});
-            this.tableCustomers.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.tableCustomers.Location = new System.Drawing.Point(286, 76);
-            this.tableCustomers.Name = "tableCustomers";
-            this.tableCustomers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.tableCustomers.RowTemplate.Height = 24;
-            this.tableCustomers.Size = new System.Drawing.Size(958, 584);
-            this.tableCustomers.TabIndex = 22;
+            this.paymentsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.paymentsTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.paymentsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.paymentsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idColumn,
+            this.orderidColumn,
+            this.amountColumn,
+            this.paymentmethodColumn,
+            this.statusColumn});
+            this.paymentsTable.Location = new System.Drawing.Point(290, 119);
+            this.paymentsTable.Name = "paymentsTable";
+            this.paymentsTable.RowHeadersWidth = 51;
+            this.paymentsTable.RowTemplate.Height = 24;
+            this.paymentsTable.Size = new System.Drawing.Size(945, 575);
+            this.paymentsTable.TabIndex = 25;
             // 
-            // columnID
+            // idColumn
             // 
-            this.columnID.FillWeight = 0.2126608F;
-            this.columnID.Frozen = true;
-            this.columnID.HeaderText = "ID";
-            this.columnID.MinimumWidth = 152;
-            this.columnID.Name = "columnID";
-            this.columnID.Width = 152;
+            this.idColumn.HeaderText = "ID";
+            this.idColumn.MinimumWidth = 6;
+            this.idColumn.Name = "idColumn";
             // 
-            // columnName
+            // orderidColumn
             // 
-            this.columnName.FillWeight = 458.4813F;
-            this.columnName.Frozen = true;
-            this.columnName.HeaderText = "Order ID";
-            this.columnName.MinimumWidth = 152;
-            this.columnName.Name = "columnName";
-            this.columnName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.columnName.Width = 152;
+            this.orderidColumn.HeaderText = "Order ID";
+            this.orderidColumn.MinimumWidth = 6;
+            this.orderidColumn.Name = "orderidColumn";
             // 
-            // columnEmail
+            // amountColumn
             // 
-            this.columnEmail.FillWeight = 0.7174977F;
-            this.columnEmail.Frozen = true;
-            this.columnEmail.HeaderText = "Amount";
-            this.columnEmail.MinimumWidth = 152;
-            this.columnEmail.Name = "columnEmail";
-            this.columnEmail.Width = 152;
+            this.amountColumn.HeaderText = "Amount";
+            this.amountColumn.MinimumWidth = 6;
+            this.amountColumn.Name = "amountColumn";
             // 
-            // columnPhoneNo
+            // paymentmethodColumn
             // 
-            this.columnPhoneNo.FillWeight = 4.472073F;
-            this.columnPhoneNo.Frozen = true;
-            this.columnPhoneNo.HeaderText = "Payment Method";
-            this.columnPhoneNo.MinimumWidth = 155;
-            this.columnPhoneNo.Name = "columnPhoneNo";
-            this.columnPhoneNo.Width = 155;
+            this.paymentmethodColumn.HeaderText = "Payment Method";
+            this.paymentmethodColumn.MinimumWidth = 6;
+            this.paymentmethodColumn.Name = "paymentmethodColumn";
             // 
-            // columnStatus
+            // statusColumn
             // 
-            this.columnStatus.FillWeight = 173.7492F;
-            this.columnStatus.Frozen = true;
-            this.columnStatus.HeaderText = "Status";
-            this.columnStatus.MinimumWidth = 152;
-            this.columnStatus.Name = "columnStatus";
-            this.columnStatus.Width = 152;
+            this.statusColumn.HeaderText = "Status";
+            this.statusColumn.MinimumWidth = 6;
+            this.statusColumn.Name = "statusColumn";
             // 
-            // columnAction
+            // button1
             // 
-            this.columnAction.FillWeight = 34.49162F;
-            this.columnAction.Frozen = true;
-            this.columnAction.HeaderText = "Action";
-            this.columnAction.MinimumWidth = 152;
-            this.columnAction.Name = "columnAction";
-            this.columnAction.Width = 152;
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(1120, 71);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(39, 34);
+            this.button1.TabIndex = 27;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // searchtextBox
+            // 
+            this.searchtextBox.Location = new System.Drawing.Point(362, 83);
+            this.searchtextBox.Name = "searchtextBox";
+            this.searchtextBox.Size = new System.Drawing.Size(202, 22);
+            this.searchtextBox.TabIndex = 28;
+            // 
+            // searchLabel
+            // 
+            this.searchLabel.AutoSize = true;
+            this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.searchLabel.Location = new System.Drawing.Point(287, 84);
+            this.searchLabel.Name = "searchLabel";
+            this.searchLabel.Size = new System.Drawing.Size(59, 18);
+            this.searchLabel.TabIndex = 29;
+            this.searchLabel.Text = "Search:";
+            this.searchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLabel.Location = new System.Drawing.Point(598, 84);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(54, 18);
+            this.statusLabel.TabIndex = 30;
+            this.statusLabel.Text = "Status:";
+            // 
+            // statuscomboBox
+            // 
+            this.statuscomboBox.FormattingEnabled = true;
+            this.statuscomboBox.Items.AddRange(new object[] {
+            "Pending",
+            "Paid",
+            "Failed"});
+            this.statuscomboBox.Location = new System.Drawing.Point(668, 82);
+            this.statuscomboBox.Name = "statuscomboBox";
+            this.statuscomboBox.Size = new System.Drawing.Size(183, 24);
+            this.statuscomboBox.TabIndex = 31;
+            // 
+            // coffeeshoplabel
+            // 
+            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
+            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
+            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
+            this.coffeeshoplabel.Name = "coffeeshoplabel";
+            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
+            this.coffeeshoplabel.TabIndex = 9;
+            this.coffeeshoplabel.Text = "Coffee Shop";
+            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FormPayments
             // 
@@ -252,17 +299,22 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1274, 761);
+            this.Controls.Add(this.statuscomboBox);
+            this.Controls.Add(this.statusLabel);
+            this.Controls.Add(this.searchLabel);
+            this.Controls.Add(this.searchtextBox);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.paymentsTable);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.labelPayments);
-            this.Controls.Add(this.tableCustomers);
             this.Controls.Add(this.paymentsSidebar);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormPayments";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormPayments";
+            this.Text = "Payments";
             this.paymentsSidebar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tableCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentsTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,12 +333,17 @@
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label labelPayments;
-        private System.Windows.Forms.DataGridView tableCustomers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnPhoneNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnAction;
+        private System.Windows.Forms.DataGridView paymentsTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderidColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentmethodColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusColumn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox searchtextBox;
+        private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.ComboBox statuscomboBox;
+        private System.Windows.Forms.Label coffeeshoplabel;
     }
 }

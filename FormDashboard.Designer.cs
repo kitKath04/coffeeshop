@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDashboard));
             this.dashboardSidebar = new System.Windows.Forms.GroupBox();
             this.btnArchivedOrders = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.dashboardSidebar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -59,6 +61,7 @@
             // dashboardSidebar
             // 
             this.dashboardSidebar.BackColor = System.Drawing.Color.SteelBlue;
+            this.dashboardSidebar.Controls.Add(this.coffeeshoplabel);
             this.dashboardSidebar.Controls.Add(this.btnArchivedOrders);
             this.dashboardSidebar.Controls.Add(this.btnLogout);
             this.dashboardSidebar.Controls.Add(this.btnEmployees);
@@ -75,7 +78,7 @@
             // 
             // btnArchivedOrders
             // 
-            this.btnArchivedOrders.Location = new System.Drawing.Point(41, 542);
+            this.btnArchivedOrders.Location = new System.Drawing.Point(41, 567);
             this.btnArchivedOrders.Name = "btnArchivedOrders";
             this.btnArchivedOrders.Size = new System.Drawing.Size(170, 36);
             this.btnArchivedOrders.TabIndex = 7;
@@ -95,7 +98,7 @@
             // 
             // btnEmployees
             // 
-            this.btnEmployees.Location = new System.Drawing.Point(41, 465);
+            this.btnEmployees.Location = new System.Drawing.Point(41, 490);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.Size = new System.Drawing.Size(170, 36);
             this.btnEmployees.TabIndex = 5;
@@ -105,7 +108,7 @@
             // 
             // btnPayments
             // 
-            this.btnPayments.Location = new System.Drawing.Point(41, 239);
+            this.btnPayments.Location = new System.Drawing.Point(41, 264);
             this.btnPayments.Name = "btnPayments";
             this.btnPayments.Size = new System.Drawing.Size(170, 36);
             this.btnPayments.TabIndex = 4;
@@ -115,7 +118,7 @@
             // 
             // btnCustomers
             // 
-            this.btnCustomers.Location = new System.Drawing.Point(41, 388);
+            this.btnCustomers.Location = new System.Drawing.Point(41, 413);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(170, 36);
             this.btnCustomers.TabIndex = 3;
@@ -125,7 +128,7 @@
             // 
             // btnProducts
             // 
-            this.btnProducts.Location = new System.Drawing.Point(41, 314);
+            this.btnProducts.Location = new System.Drawing.Point(41, 339);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(170, 36);
             this.btnProducts.TabIndex = 2;
@@ -135,7 +138,7 @@
             // 
             // btnOrders
             // 
-            this.btnOrders.Location = new System.Drawing.Point(41, 161);
+            this.btnOrders.Location = new System.Drawing.Point(41, 186);
             this.btnOrders.Name = "btnOrders";
             this.btnOrders.Size = new System.Drawing.Size(170, 36);
             this.btnOrders.TabIndex = 1;
@@ -145,7 +148,7 @@
             // 
             // btnDashboard
             // 
-            this.btnDashboard.Location = new System.Drawing.Point(41, 87);
+            this.btnDashboard.Location = new System.Drawing.Point(41, 112);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(170, 36);
             this.btnDashboard.TabIndex = 0;
@@ -260,6 +263,19 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Active Customers";
             // 
+            // coffeeshoplabel
+            // 
+            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
+            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
+            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
+            this.coffeeshoplabel.Name = "coffeeshoplabel";
+            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
+            this.coffeeshoplabel.TabIndex = 9;
+            this.coffeeshoplabel.Text = "Coffee Shop";
+            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -316,5 +332,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label coffeeshoplabel;
     }
 }

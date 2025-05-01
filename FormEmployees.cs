@@ -79,5 +79,10 @@ namespace EDP_WinProject
             myform.Show();
             this.Hide();
         }
+
+        private void employeesSidebar_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

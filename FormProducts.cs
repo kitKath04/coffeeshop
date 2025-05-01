@@ -79,5 +79,10 @@ namespace EDP_WinProject
             myform.Show();
             this.Hide();
         }
+
+        private void FormProducts_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
