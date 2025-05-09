@@ -121,7 +121,7 @@
   <data name="coffeeshoplabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADQAAAA2CAYAAACIsLrgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAAB9NJREFUaEPtmH1QFPcdxg8RkHcLtdQafKEQyyE3ifGMgPKecAcn5WDvUF4PkRoU
+        cQAAEnEB89x6jgAAB9NJREFUaEPtmH1QFPcdxg8RkHcLtdQafKEQyyE3ifGMgPKecAcn5WDvUF4PkRoU
         EXoEUMObRdIZJnipOi1Q5MTodC7lJeARWxlAROPG18i2xpqQJkFijG2n/7Q6bXn63eXOlo60vXCXiMMz
         88zu/e729vfZ5/e6ojnN6QmVVqsV8zZ9nN0ikGXe3t7VRUVFrbt27ZKbime3CIYhKDQ1NRmeiKQaGxul
         xcXFiI2NZQsLC6Wm4tmrrq4uhtJ5MoAIRgwS9R8eCKbi2Su+uXV2dk4BmZWjXmBg4DLTqSgiImIKUGlp
@@ -160,7 +160,7 @@
   <data name="labelProducts.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAfCAYAAAD0ma06AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAAhtJREFUSEvtlE3LaVEUx4mSAQbCzFBJISTKSBmKvJZ8AmUgBky8jXwAE3wAJQMT
+        cQAAEnEB89x6jgAAAhtJREFUSEvtlE3LaVEUx4mSAQbCzFBJISTKSBmKvJZ8AmUgBky8jXwAE3wAJQMT
         ZWZEkamUyFeQxITW01rte3OeZ/McT+7t1vWrVee/1l7r39ln7yOBv8zb8OX824abzQYKhQI4nU5wu91Q
         LBZht9uxqjhEG06nUzAajSCRSASBOayJRZTh6XQCn89HBmazGdrtNrRaLTCZTJTzeDxwOBzY6seIMpzP
         5yCTyUCr1cJ6vWZZgO12CzqdDuRyOcxmM5Z9zF1DfKt+vw/VahUSiQS9icFggFqtRjkMfNbr9VSLx+NQ

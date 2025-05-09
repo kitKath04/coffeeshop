@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,67 @@ namespace EDP_WinProject
         public FormPayments()
         {
             InitializeComponent();
+            this.Load += new EventHandler(FormPayments_Load);
+        }
+
+        private void FormPayments_Load(object sender, EventArgs e)
+        {
+            LoadPayments();
+        }
+
+        private void LoadPayments()
+        {
+            string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = @"
+                        SELECT 
+                            p.payments_id AS ID,
+                            o.orders_id AS `Order ID`,
+                            oi.subtotal_price AS Amount,
+                            pm.method_of_payment AS `Payment Method`,
+                            ps.status AS Status
+                        FROM payments p
+                        LEFT JOIN orders o ON p.orders_id = o.orders_id 
+                        LEFT JOIN orders_items oi ON p.ordersitems_id = oi.ordersitems_id
+                        LEFT JOIN payment_method pm ON p.payment_method = pm.paymentmethod_id
+                        LEFT JOIN payment_status ps ON p.payment_status = ps.paymentstatus_id";
+
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    paymentsTable.AutoGenerateColumns = false;
+                    paymentsTable.Columns.Clear();
+
+                    paymentsTable.Columns.Add("ID", "ID");
+                    paymentsTable.Columns["ID"].DataPropertyName = "ID";
+
+                    paymentsTable.Columns.Add("OrderID", "Order ID");
+                    paymentsTable.Columns["OrderID"].DataPropertyName = "Order ID";
+
+                    paymentsTable.Columns.Add("Amount", "Amount");
+                    paymentsTable.Columns["Amount"].DataPropertyName = "Amount";
+
+                    paymentsTable.Columns.Add("PaymentMethod", "Payment Method");
+                    paymentsTable.Columns["PaymentMethod"].DataPropertyName = "Payment Method";
+
+                    paymentsTable.Columns.Add("Status", "Status");
+                    paymentsTable.Columns["Status"].DataPropertyName = "Status";
+
+                    paymentsTable.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading payments: " + ex.Message);
+                }
+            }
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)

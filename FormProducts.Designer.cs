@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProducts));
             this.productsSidebar = new System.Windows.Forms.GroupBox();
+            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.btnArchivedOrders = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
@@ -45,12 +46,10 @@
             this.labelPrice = new System.Windows.Forms.Label();
             this.labelCategory = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.labelID = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.categorycomboBox = new System.Windows.Forms.ComboBox();
+            this.StocktextBox = new System.Windows.Forms.TextBox();
+            this.PricetextBox = new System.Windows.Forms.TextBox();
+            this.ProductNametextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -61,11 +60,8 @@
             this.priceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exportbutton = new System.Windows.Forms.Button();
-            this.namecomboBox = new System.Windows.Forms.ComboBox();
-            this.nameLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchtextBox = new System.Windows.Forms.TextBox();
-            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.productsSidebar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsTable)).BeginInit();
@@ -88,6 +84,19 @@
             this.productsSidebar.Size = new System.Drawing.Size(254, 762);
             this.productsSidebar.TabIndex = 0;
             this.productsSidebar.TabStop = false;
+            // 
+            // coffeeshoplabel
+            // 
+            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
+            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
+            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
+            this.coffeeshoplabel.Name = "coffeeshoplabel";
+            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
+            this.coffeeshoplabel.TabIndex = 9;
+            this.coffeeshoplabel.Text = "Coffee Shop";
+            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnArchivedOrders
             // 
@@ -186,18 +195,19 @@
             this.btnAddProduct.BackColor = System.Drawing.Color.SteelBlue;
             this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAddProduct.Location = new System.Drawing.Point(834, 152);
+            this.btnAddProduct.Location = new System.Drawing.Point(834, 158);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(105, 31);
             this.btnAddProduct.TabIndex = 3;
             this.btnAddProduct.Text = "Add";
             this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click_1);
             // 
             // labelProductName
             // 
             this.labelProductName.AutoSize = true;
             this.labelProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProductName.Location = new System.Drawing.Point(18, 105);
+            this.labelProductName.Location = new System.Drawing.Point(19, 61);
             this.labelProductName.Name = "labelProductName";
             this.labelProductName.Size = new System.Drawing.Size(109, 16);
             this.labelProductName.TabIndex = 5;
@@ -207,7 +217,7 @@
             // 
             this.labelStock.AutoSize = true;
             this.labelStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStock.Location = new System.Drawing.Point(543, 100);
+            this.labelStock.Location = new System.Drawing.Point(543, 106);
             this.labelStock.Name = "labelStock";
             this.labelStock.Size = new System.Drawing.Size(50, 16);
             this.labelStock.TabIndex = 6;
@@ -217,7 +227,7 @@
             // 
             this.labelPrice.AutoSize = true;
             this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrice.Location = new System.Drawing.Point(543, 54);
+            this.labelPrice.Location = new System.Drawing.Point(543, 60);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(47, 16);
             this.labelPrice.TabIndex = 7;
@@ -227,7 +237,7 @@
             // 
             this.labelCategory.AutoSize = true;
             this.labelCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCategory.Location = new System.Drawing.Point(18, 160);
+            this.labelCategory.Location = new System.Drawing.Point(19, 110);
             this.labelCategory.Name = "labelCategory";
             this.labelCategory.Size = new System.Drawing.Size(74, 16);
             this.labelCategory.TabIndex = 8;
@@ -236,13 +246,11 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.labelID);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.categorycomboBox);
+            this.groupBox1.Controls.Add(this.StocktextBox);
             this.groupBox1.Controls.Add(this.btnAddProduct);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.PricetextBox);
+            this.groupBox1.Controls.Add(this.ProductNametextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.labelCategory);
             this.groupBox1.Controls.Add(this.labelPrice);
@@ -254,60 +262,40 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
-            // textBox5
+            // categorycomboBox
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(146, 48);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(333, 30);
-            this.textBox5.TabIndex = 15;
+            this.categorycomboBox.FormattingEnabled = true;
+            this.categorycomboBox.Location = new System.Drawing.Point(147, 107);
+            this.categorycomboBox.Name = "categorycomboBox";
+            this.categorycomboBox.Size = new System.Drawing.Size(333, 24);
+            this.categorycomboBox.TabIndex = 40;
             // 
-            // labelID
+            // StocktextBox
             // 
-            this.labelID.AutoSize = true;
-            this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelID.Location = new System.Drawing.Point(18, 55);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(26, 16);
-            this.labelID.TabIndex = 14;
-            this.labelID.Text = "ID:";
+            this.StocktextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StocktextBox.Location = new System.Drawing.Point(606, 101);
+            this.StocktextBox.Multiline = true;
+            this.StocktextBox.Name = "StocktextBox";
+            this.StocktextBox.Size = new System.Drawing.Size(333, 30);
+            this.StocktextBox.TabIndex = 13;
             // 
-            // textBox4
+            // PricetextBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(606, 95);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(333, 30);
-            this.textBox4.TabIndex = 13;
+            this.PricetextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PricetextBox.Location = new System.Drawing.Point(606, 53);
+            this.PricetextBox.Multiline = true;
+            this.PricetextBox.Name = "PricetextBox";
+            this.PricetextBox.Size = new System.Drawing.Size(333, 30);
+            this.PricetextBox.TabIndex = 12;
             // 
-            // textBox3
+            // ProductNametextBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(606, 47);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(333, 30);
-            this.textBox3.TabIndex = 12;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(146, 153);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(333, 30);
-            this.textBox2.TabIndex = 11;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(146, 99);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(333, 30);
-            this.textBox1.TabIndex = 10;
+            this.ProductNametextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductNametextBox.Location = new System.Drawing.Point(147, 55);
+            this.ProductNametextBox.Multiline = true;
+            this.ProductNametextBox.Name = "ProductNametextBox";
+            this.ProductNametextBox.Size = new System.Drawing.Size(333, 30);
+            this.ProductNametextBox.TabIndex = 10;
             // 
             // label1
             // 
@@ -343,9 +331,12 @@
             this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // productsTable
             // 
+            this.productsTable.AllowUserToAddRows = false;
+            this.productsTable.AllowUserToDeleteRows = false;
             this.productsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.productsTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.productsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -357,6 +348,7 @@
             this.stockColumn});
             this.productsTable.Location = new System.Drawing.Point(285, 83);
             this.productsTable.Name = "productsTable";
+            this.productsTable.ReadOnly = true;
             this.productsTable.RowHeadersWidth = 51;
             this.productsTable.RowTemplate.Height = 24;
             this.productsTable.Size = new System.Drawing.Size(957, 462);
@@ -367,30 +359,35 @@
             this.IDColumn.HeaderText = "ID";
             this.IDColumn.MinimumWidth = 6;
             this.IDColumn.Name = "IDColumn";
+            this.IDColumn.ReadOnly = true;
             // 
             // productnameColumn
             // 
             this.productnameColumn.HeaderText = "Product Name";
             this.productnameColumn.MinimumWidth = 6;
             this.productnameColumn.Name = "productnameColumn";
+            this.productnameColumn.ReadOnly = true;
             // 
             // categoryColumn
             // 
             this.categoryColumn.HeaderText = "Category";
             this.categoryColumn.MinimumWidth = 6;
             this.categoryColumn.Name = "categoryColumn";
+            this.categoryColumn.ReadOnly = true;
             // 
             // priceColumn
             // 
             this.priceColumn.HeaderText = "Price";
             this.priceColumn.MinimumWidth = 6;
             this.priceColumn.Name = "priceColumn";
+            this.priceColumn.ReadOnly = true;
             // 
             // stockColumn
             // 
             this.stockColumn.HeaderText = "Stock";
             this.stockColumn.MinimumWidth = 6;
             this.stockColumn.Name = "stockColumn";
+            this.stockColumn.ReadOnly = true;
             // 
             // exportbutton
             // 
@@ -403,51 +400,6 @@
             this.exportbutton.Size = new System.Drawing.Size(39, 34);
             this.exportbutton.TabIndex = 21;
             this.exportbutton.UseVisualStyleBackColor = false;
-            // 
-            // namecomboBox
-            // 
-            this.namecomboBox.FormattingEnabled = true;
-            this.namecomboBox.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z"});
-            this.namecomboBox.Location = new System.Drawing.Point(664, 52);
-            this.namecomboBox.Name = "namecomboBox";
-            this.namecomboBox.Size = new System.Drawing.Size(183, 24);
-            this.namecomboBox.TabIndex = 39;
-            // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel.Location = new System.Drawing.Point(594, 54);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(52, 18);
-            this.nameLabel.TabIndex = 38;
-            this.nameLabel.Text = "Name:";
             // 
             // searchLabel
             // 
@@ -468,19 +420,6 @@
             this.searchtextBox.Size = new System.Drawing.Size(202, 22);
             this.searchtextBox.TabIndex = 36;
             // 
-            // coffeeshoplabel
-            // 
-            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
-            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
-            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
-            this.coffeeshoplabel.Name = "coffeeshoplabel";
-            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
-            this.coffeeshoplabel.TabIndex = 9;
-            this.coffeeshoplabel.Text = "Coffee Shop";
-            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // FormProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -488,8 +427,6 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1274, 761);
-            this.Controls.Add(this.namecomboBox);
-            this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.searchtextBox);
             this.Controls.Add(this.exportbutton);
@@ -531,13 +468,10 @@
         private System.Windows.Forms.Label labelCategory;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox ProductNametextBox;
+        private System.Windows.Forms.TextBox StocktextBox;
+        private System.Windows.Forms.TextBox PricetextBox;
         private System.Windows.Forms.Button btnArchivedOrders;
-        private System.Windows.Forms.Label labelID;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView productsTable;
@@ -548,11 +482,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stockColumn;
         private System.Windows.Forms.Label labelProducts;
         private System.Windows.Forms.Button exportbutton;
-        private System.Windows.Forms.ComboBox namecomboBox;
-        private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.TextBox searchtextBox;
         private System.Windows.Forms.Label coffeeshoplabel;
+        private System.Windows.Forms.ComboBox categorycomboBox;
     }
 }
 

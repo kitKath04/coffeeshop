@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,61 @@ namespace EDP_WinProject
         public FormEmployees()
         {
             InitializeComponent();
+            this.Load += new EventHandler(FormEmployees_Load);
+        }
+
+        private void FormEmployees_Load(object sender, EventArgs e)
+        {
+            LoadData(); // Call data loader
+        }
+
+        private void LoadData()
+        {
+            string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                        SELECT 
+                            employees_id AS ID,
+                            CONCAT(fname, ' ', lname) AS Name,
+                            email AS Email,
+                            phone_num AS `Phone No.`,
+                            position AS Position
+                        FROM employees";
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    employeesTable.AutoGenerateColumns = false;
+                    employeesTable.Columns.Clear();
+
+                    employeesTable.Columns.Add("ID", "ID");
+                    employeesTable.Columns["ID"].DataPropertyName = "ID";
+
+                    employeesTable.Columns.Add("Name", "Name");
+                    employeesTable.Columns["Name"].DataPropertyName = "Name";
+
+                    employeesTable.Columns.Add("Email", "Email");
+                    employeesTable.Columns["Email"].DataPropertyName = "Email";
+
+                    employeesTable.Columns.Add("Phone", "Phone No.");
+                    employeesTable.Columns["Phone"].DataPropertyName = "Phone No.";
+
+                    employeesTable.Columns.Add("Position", "Position");
+                    employeesTable.Columns["Position"].DataPropertyName = "Position";
+
+                    employeesTable.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading employee data: " + ex.Message);
+                }
+            }
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormArchivedOrders));
             this.archivedordersSidebar = new System.Windows.Forms.GroupBox();
+            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.btnArchivedOrders = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
@@ -39,7 +40,12 @@
             this.btnOrders = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.labelArchivedOrders = new System.Windows.Forms.Label();
-            this.archiveddataTable = new System.Windows.Forms.DataGridView();
+            this.archivedordersTable = new System.Windows.Forms.DataGridView();
+            this.exportbutton = new System.Windows.Forms.Button();
+            this.statuscomboBox = new System.Windows.Forms.ComboBox();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.searchLabel = new System.Windows.Forms.Label();
+            this.searchtextBox = new System.Windows.Forms.TextBox();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderitemsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,14 +53,8 @@
             this.amountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.archiveddateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exportbutton = new System.Windows.Forms.Button();
-            this.statuscomboBox = new System.Windows.Forms.ComboBox();
-            this.statusLabel = new System.Windows.Forms.Label();
-            this.searchLabel = new System.Windows.Forms.Label();
-            this.searchtextBox = new System.Windows.Forms.TextBox();
-            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.archivedordersSidebar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.archiveddataTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.archivedordersTable)).BeginInit();
             this.SuspendLayout();
             // 
             // archivedordersSidebar
@@ -74,6 +74,19 @@
             this.archivedordersSidebar.Size = new System.Drawing.Size(254, 762);
             this.archivedordersSidebar.TabIndex = 13;
             this.archivedordersSidebar.TabStop = false;
+            // 
+            // coffeeshoplabel
+            // 
+            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
+            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
+            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
+            this.coffeeshoplabel.Name = "coffeeshoplabel";
+            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
+            this.coffeeshoplabel.TabIndex = 9;
+            this.coffeeshoplabel.Text = "Coffee Shop";
+            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnArchivedOrders
             // 
@@ -167,12 +180,12 @@
             this.labelArchivedOrders.Text = "Archived Orders";
             this.labelArchivedOrders.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // archiveddataTable
+            // archivedordersTable
             // 
-            this.archiveddataTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.archiveddataTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.archiveddataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.archiveddataTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.archivedordersTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.archivedordersTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.archivedordersTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.archivedordersTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idColumn,
             this.customerColumn,
             this.orderitemsColumn,
@@ -180,54 +193,12 @@
             this.amountColumn,
             this.statusColumn,
             this.archiveddateColumn});
-            this.archiveddataTable.Location = new System.Drawing.Point(290, 116);
-            this.archiveddataTable.Name = "archiveddataTable";
-            this.archiveddataTable.RowHeadersWidth = 51;
-            this.archiveddataTable.RowTemplate.Height = 24;
-            this.archiveddataTable.Size = new System.Drawing.Size(945, 575);
-            this.archiveddataTable.TabIndex = 19;
-            // 
-            // idColumn
-            // 
-            this.idColumn.HeaderText = "ID";
-            this.idColumn.MinimumWidth = 6;
-            this.idColumn.Name = "idColumn";
-            // 
-            // customerColumn
-            // 
-            this.customerColumn.HeaderText = "Customer";
-            this.customerColumn.MinimumWidth = 6;
-            this.customerColumn.Name = "customerColumn";
-            // 
-            // orderitemsColumn
-            // 
-            this.orderitemsColumn.HeaderText = "Order Items";
-            this.orderitemsColumn.MinimumWidth = 6;
-            this.orderitemsColumn.Name = "orderitemsColumn";
-            // 
-            // orderdateColumn
-            // 
-            this.orderdateColumn.HeaderText = "Order Date";
-            this.orderdateColumn.MinimumWidth = 6;
-            this.orderdateColumn.Name = "orderdateColumn";
-            // 
-            // amountColumn
-            // 
-            this.amountColumn.HeaderText = "Amount";
-            this.amountColumn.MinimumWidth = 6;
-            this.amountColumn.Name = "amountColumn";
-            // 
-            // statusColumn
-            // 
-            this.statusColumn.HeaderText = "Status";
-            this.statusColumn.MinimumWidth = 6;
-            this.statusColumn.Name = "statusColumn";
-            // 
-            // archiveddateColumn
-            // 
-            this.archiveddateColumn.HeaderText = "Archived Date";
-            this.archiveddateColumn.MinimumWidth = 6;
-            this.archiveddateColumn.Name = "archiveddateColumn";
+            this.archivedordersTable.Location = new System.Drawing.Point(290, 116);
+            this.archivedordersTable.Name = "archivedordersTable";
+            this.archivedordersTable.RowHeadersWidth = 51;
+            this.archivedordersTable.RowTemplate.Height = 24;
+            this.archivedordersTable.Size = new System.Drawing.Size(945, 575);
+            this.archivedordersTable.TabIndex = 19;
             // 
             // exportbutton
             // 
@@ -282,18 +253,47 @@
             this.searchtextBox.Size = new System.Drawing.Size(202, 22);
             this.searchtextBox.TabIndex = 32;
             // 
-            // coffeeshoplabel
+            // idColumn
             // 
-            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
-            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
-            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
-            this.coffeeshoplabel.Name = "coffeeshoplabel";
-            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
-            this.coffeeshoplabel.TabIndex = 9;
-            this.coffeeshoplabel.Text = "Coffee Shop";
-            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.idColumn.HeaderText = "Order ID";
+            this.idColumn.MinimumWidth = 6;
+            this.idColumn.Name = "idColumn";
+            // 
+            // customerColumn
+            // 
+            this.customerColumn.HeaderText = "Customer";
+            this.customerColumn.MinimumWidth = 6;
+            this.customerColumn.Name = "customerColumn";
+            // 
+            // orderitemsColumn
+            // 
+            this.orderitemsColumn.HeaderText = "Order Items";
+            this.orderitemsColumn.MinimumWidth = 6;
+            this.orderitemsColumn.Name = "orderitemsColumn";
+            // 
+            // orderdateColumn
+            // 
+            this.orderdateColumn.HeaderText = "Order Date";
+            this.orderdateColumn.MinimumWidth = 6;
+            this.orderdateColumn.Name = "orderdateColumn";
+            // 
+            // amountColumn
+            // 
+            this.amountColumn.HeaderText = "Amount";
+            this.amountColumn.MinimumWidth = 6;
+            this.amountColumn.Name = "amountColumn";
+            // 
+            // statusColumn
+            // 
+            this.statusColumn.HeaderText = "Status";
+            this.statusColumn.MinimumWidth = 6;
+            this.statusColumn.Name = "statusColumn";
+            // 
+            // archiveddateColumn
+            // 
+            this.archiveddateColumn.HeaderText = "Archived Date";
+            this.archiveddateColumn.MinimumWidth = 6;
+            this.archiveddateColumn.Name = "archiveddateColumn";
             // 
             // FormArchivedOrders
             // 
@@ -306,7 +306,7 @@
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.searchtextBox);
             this.Controls.Add(this.exportbutton);
-            this.Controls.Add(this.archiveddataTable);
+            this.Controls.Add(this.archivedordersTable);
             this.Controls.Add(this.labelArchivedOrders);
             this.Controls.Add(this.archivedordersSidebar);
             this.MaximizeBox = false;
@@ -315,7 +315,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Archived Orders";
             this.archivedordersSidebar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.archiveddataTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.archivedordersTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,7 +333,13 @@
         private System.Windows.Forms.Button btnOrders;
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Label labelArchivedOrders;
-        private System.Windows.Forms.DataGridView archiveddataTable;
+        private System.Windows.Forms.DataGridView archivedordersTable;
+        private System.Windows.Forms.Button exportbutton;
+        private System.Windows.Forms.ComboBox statuscomboBox;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.TextBox searchtextBox;
+        private System.Windows.Forms.Label coffeeshoplabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderitemsColumn;
@@ -341,11 +347,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn archiveddateColumn;
-        private System.Windows.Forms.Button exportbutton;
-        private System.Windows.Forms.ComboBox statuscomboBox;
-        private System.Windows.Forms.Label statusLabel;
-        private System.Windows.Forms.Label searchLabel;
-        private System.Windows.Forms.TextBox searchtextBox;
-        private System.Windows.Forms.Label coffeeshoplabel;
     }
 }

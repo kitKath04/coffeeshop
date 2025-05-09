@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,73 @@ namespace EDP_WinProject
         public FormOrders()
         {
             InitializeComponent();
+            this.Load += new EventHandler(FormOrders_Load);
         }
+
+        private void FormOrders_Load(object sender, EventArgs e)
+        {
+            LoadOrders();
+        }
+
+        private void LoadOrders()
+        {
+            string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = @"
+                SELECT 
+                    o.orders_id AS ID,
+                    CONCAT(c.fname, ' ', c.lname) AS Customer,
+                    GROUP_CONCAT(p.product_name SEPARATOR ', ') AS `Order Items`,
+                    o.order_date AS Date,
+                    SUM(oi.subtotal_price) AS Amount,
+                    o.status AS Status
+                FROM orders o
+                LEFT JOIN customers c ON o.customers_id = c.customers_id
+                LEFT JOIN orders_items oi ON o.orders_id = oi.orders_id
+                LEFT JOIN products p ON oi.products_id = p.products_id
+                GROUP BY o.orders_id
+                ORDER BY o.order_date DESC";
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    ordersTable.AutoGenerateColumns = false;
+                    ordersTable.Columns.Clear();
+
+                    ordersTable.Columns.Add("ID", "ID");
+                    ordersTable.Columns["ID"].DataPropertyName = "ID";
+
+                    ordersTable.Columns.Add("Customer", "Customer");
+                    ordersTable.Columns["Customer"].DataPropertyName = "Customer";
+
+                    ordersTable.Columns.Add("OrderItems", "Order Items");
+                    ordersTable.Columns["OrderItems"].DataPropertyName = "Order Items";
+
+                    ordersTable.Columns.Add("Date", "Date");
+                    ordersTable.Columns["Date"].DataPropertyName = "Date";
+
+                    ordersTable.Columns.Add("Amount", "Amount");
+                    ordersTable.Columns["Amount"].DataPropertyName = "Amount";
+
+                    ordersTable.Columns.Add("Status", "Status");
+                    ordersTable.Columns["Status"].DataPropertyName = "Status";
+
+                    ordersTable.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading orders: " + ex.Message);
+                }
+            }
+        }
+
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,77 @@ namespace EDP_WinProject
         public FormArchivedOrders()
         {
             InitializeComponent();
+            this.Load += new EventHandler(FormArchivedOrders_Load);
         }
+
+        private void FormArchivedOrders_Load(object sender, EventArgs e)
+        {
+            LoadArchivedOrders();
+        }
+
+        private void LoadArchivedOrders()
+        {
+            string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = @"
+                SELECT 
+                    ao.orders_id AS `Order ID`,
+                    CONCAT(c.fname, ' ', c.lname) AS Customer,
+                    GROUP_CONCAT(p.product_name SEPARATOR ', ') AS `Order Items`,
+                    ao.order_date AS `Order Date`,
+                    SUM(oi.subtotal_price) AS Amount,
+                    ao.status AS Status,
+                    ao.archived_date AS `Archived Date`
+                FROM archived_orders ao
+                LEFT JOIN customers c ON ao.customers_id = c.customers_id
+                LEFT JOIN orders_items oi ON ao.orders_id = oi.orders_id
+                LEFT JOIN products p ON oi.products_id = p.products_id
+                GROUP BY ao.orders_id
+                ORDER BY ao.archived_date DESC";
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    archivedordersTable.AutoGenerateColumns = false;
+                    archivedordersTable.Columns.Clear();
+
+                    archivedordersTable.Columns.Add("OrderID", "Order ID");
+                    archivedordersTable.Columns["OrderID"].DataPropertyName = "Order ID";
+
+                    archivedordersTable.Columns.Add("Customer", "Customer");
+                    archivedordersTable.Columns["Customer"].DataPropertyName = "Customer";
+
+                    archivedordersTable.Columns.Add("OrderItems", "Order Items");
+                    archivedordersTable.Columns["OrderItems"].DataPropertyName = "Order Items";
+
+                    archivedordersTable.Columns.Add("OrderDate", "Order Date");
+                    archivedordersTable.Columns["OrderDate"].DataPropertyName = "Order Date";
+
+                    archivedordersTable.Columns.Add("Amount", "Amount");
+                    archivedordersTable.Columns["Amount"].DataPropertyName = "Amount";
+
+                    archivedordersTable.Columns.Add("Status", "Status");
+                    archivedordersTable.Columns["Status"].DataPropertyName = "Status";
+
+                    archivedordersTable.Columns.Add("ArchivedDate", "Archived Date");
+                    archivedordersTable.Columns["ArchivedDate"].DataPropertyName = "Archived Date";
+
+                    archivedordersTable.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading archived orders: " + ex.Message);
+                }
+            }
+        }
+
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {

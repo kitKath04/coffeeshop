@@ -35,11 +35,11 @@
             this.labelPrice = new System.Windows.Forms.Label();
             this.labelCategory = new System.Windows.Forms.Label();
             this.textBoxProductName = new System.Windows.Forms.TextBox();
-            this.textBoxCategory = new System.Windows.Forms.TextBox();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.textBoxStock = new System.Windows.Forms.TextBox();
             this.btnDiscard = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.categorycomboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelEditProduct
@@ -110,16 +110,6 @@
             this.textBoxProductName.TabIndex = 7;
             this.textBoxProductName.Text = "Product 1";
             // 
-            // textBoxCategory
-            // 
-            this.textBoxCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCategory.Location = new System.Drawing.Point(43, 184);
-            this.textBoxCategory.Multiline = true;
-            this.textBoxCategory.Name = "textBoxCategory";
-            this.textBoxCategory.Size = new System.Drawing.Size(421, 35);
-            this.textBoxCategory.TabIndex = 8;
-            this.textBoxCategory.Text = "Snacks";
-            // 
             // textBoxPrice
             // 
             this.textBoxPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,17 +155,25 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // categorycomboBox
+            // 
+            this.categorycomboBox.FormattingEnabled = true;
+            this.categorycomboBox.Location = new System.Drawing.Point(43, 195);
+            this.categorycomboBox.Name = "categorycomboBox";
+            this.categorycomboBox.Size = new System.Drawing.Size(421, 24);
+            this.categorycomboBox.TabIndex = 13;
+            // 
             // FormEditProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(502, 482);
+            this.Controls.Add(this.categorycomboBox);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDiscard);
             this.Controls.Add(this.textBoxStock);
             this.Controls.Add(this.textBoxPrice);
-            this.Controls.Add(this.textBoxCategory);
             this.Controls.Add(this.textBoxProductName);
             this.Controls.Add(this.labelCategory);
             this.Controls.Add(this.labelPrice);
@@ -201,11 +199,11 @@
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.Label labelStock;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxCategory;
         private System.Windows.Forms.TextBox textBoxProductName;
         private System.Windows.Forms.TextBox textBoxStock;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDiscard;
+        private System.Windows.Forms.ComboBox categorycomboBox;
     }
 }
