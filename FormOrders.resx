@@ -121,7 +121,7 @@
   <data name="labelOrders.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAA0lJREFUSEvtlksodGEYx8c1t0KUWQwLWRCxMrGQFTOThY0FkWIhZassJLcaLIgU
+        cgAAEnIBXmVb4wAAA0lJREFUSEvtlksodGEYx8c1t0KUWQwLWRCxMrGQFTOThY0FkWIhZassJLcaLIgU
         e2JHsxWFkpJk51JKlnJZyL34f/0f73uc8zljzvimbL5fvc3pfS7/5rzveZ7HhV/iv3BEdnd30d/fj8HB
         Qayvr6vd6HEsfHZ2ho6ODqSlpcHlcslKSEhAd3c3Tk5OlJdzIgrf3t5iaGgIbrdbxJKSklBXV4eGhgbE
         x8fLXk5ODoLBIK6urlRUZMIKv7y8YHFxEWVlZcY/TE1NxfT0tPIAQqEQKisrDXtxcTGWl5clNhK2wtvb
@@ -141,7 +141,7 @@
   <data name="coffeeshoplabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADQAAAA2CAYAAACIsLrgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAB9NJREFUaEPtmH1QFPcdxg8RkHcLtdQafKEQyyE3ifGMgPKecAcn5WDvUF4PkRoU
+        cgAAEnIBXmVb4wAAB9NJREFUaEPtmH1QFPcdxg8RkHcLtdQafKEQyyE3ifGMgPKecAcn5WDvUF4PkRoU
         EXoEUMObRdIZJnipOi1Q5MTodC7lJeARWxlAROPG18i2xpqQJkFijG2n/7Q6bXn63eXOlo60vXCXiMMz
         88zu/e729vfZ5/e6ojnN6QmVVqsV8zZ9nN0ikGXe3t7VRUVFrbt27ZKbime3CIYhKDQ1NRmeiKQaGxul
         xcXFiI2NZQsLC6Wm4tmrrq4uhtJ5MoAIRgwS9R8eCKbi2Su+uXV2dk4BmZWjXmBg4DLTqSgiImIKUGlp
@@ -195,6 +195,21 @@
   <metadata name="statusColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="exportbutton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAcCAYAAACdz7SqAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        cQAAEnEB89x6jgAAAgFJREFUSEvtkk2raWEUxxFioGQkvoEin4BibsZcohQiiU9BylvKNxDfw0QRycjL
+        jAGRTOR/Wqtn33u3vW9n73OP7uT8atWz17PW+u397MeA/8CP9K3oll6vV2SzWeTzeVwuF5HVhy4pSeLx
+        OAwGAwetvyLWLD2dTkgkEr+EUlDufD6LKm1oltKRvgqlyGQyokobmqXJZBJOpxPVahU2m42jVqvB5XIh
+        lUqJKm2oSp/PJyaTCcbjMYbDIUajERaLBbbbLXa7HSwWC8d+v+fn+XzOdVLtdDoVk9RRSO/3O3+V3W6X
+        HSFdGoIkZrOZg9bE6792OBxIp9O43W68/4pCOhgMuNFqtcLn8yEQCHC0223ep6+VpLQmWq0WgsEg11EP
+        nQLNaDabvP+KQhqLxbihVCrh8XiI7G/UpH9CPcVikWfQLDUU0lAoxA39fl9k5HwmJXq9Hs+gWWoopOFw
+        mBu63a7IyNEi7XQ6PINmqaFbutlsYDQaYTKZeK3Gt0sPhwPcbjc8Hg+Ox6PIyvl2KbFarbBcLsWTkrdI
+        P0O3VLq9dAO/Cr0wzdB8e6PRKDc0Gg2R0U+9XucZkUhEZOQopLlcjhv8fj8301HpCeqhXppRLpfFVDkK
+        6Ww245tJTf8SXq8X6/VaTJWjkBJUXKlU+HjoMugJ+j2FQoFf/m+oSt/Nj/SNAB+FfPLQt9gL+QAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
   <metadata name="idColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -213,19 +228,4 @@
   <metadata name="statusColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="exportbutton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAcCAYAAACdz7SqAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cQAAEnEB89x6jgAAAgFJREFUSEvtkk2raWEUxxFioGQkvoEin4BibsZcohQiiU9BylvKNxDfw0QRycjL
-        jAGRTOR/Wqtn33u3vW9n73OP7uT8atWz17PW+u397MeA/8CP9K3oll6vV2SzWeTzeVwuF5HVhy4pSeLx
-        OAwGAwetvyLWLD2dTkgkEr+EUlDufD6LKm1oltKRvgqlyGQyokobmqXJZBJOpxPVahU2m42jVqvB5XIh
-        lUqJKm2oSp/PJyaTCcbjMYbDIUajERaLBbbbLXa7HSwWC8d+v+fn+XzOdVLtdDoVk9RRSO/3O3+V3W6X
-        HSFdGoIkZrOZg9bE6792OBxIp9O43W68/4pCOhgMuNFqtcLn8yEQCHC0223ep6+VpLQmWq0WgsEg11EP
-        nQLNaDabvP+KQhqLxbihVCrh8XiI7G/UpH9CPcVikWfQLDUU0lAoxA39fl9k5HwmJXq9Hs+gWWoopOFw
-        mBu63a7IyNEi7XQ6PINmqaFbutlsYDQaYTKZeK3Gt0sPhwPcbjc8Hg+Ox6PIyvl2KbFarbBcLsWTkrdI
-        P0O3VLq9dAO/Cr0wzdB8e6PRKDc0Gg2R0U+9XucZkUhEZOQopLlcjhv8fj8301HpCeqhXppRLpfFVDkK
-        6Ww245tJTf8SXq8X6/VaTJWjkBJUXKlU+HjoMugJ+j2FQoFf/m+oSt/Nj/SNAB+FfPLQt9gL+QAAAABJ
-        RU5ErkJggg==
-</value>
-  </data>
 </root>

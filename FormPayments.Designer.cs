@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPayments));
             this.paymentsSidebar = new System.Windows.Forms.GroupBox();
+            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.btnArchivedOrders = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
@@ -47,11 +48,10 @@
             this.paymentmethodColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
-            this.searchtextBox = new System.Windows.Forms.TextBox();
-            this.searchLabel = new System.Windows.Forms.Label();
+            this.paymentmethodLabel = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
             this.statuscomboBox = new System.Windows.Forms.ComboBox();
-            this.coffeeshoplabel = new System.Windows.Forms.Label();
+            this.paymentmethodcomboBox = new System.Windows.Forms.ComboBox();
             this.paymentsSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.paymentsTable)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +73,19 @@
             this.paymentsSidebar.Size = new System.Drawing.Size(254, 762);
             this.paymentsSidebar.TabIndex = 18;
             this.paymentsSidebar.TabStop = false;
+            // 
+            // coffeeshoplabel
+            // 
+            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
+            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
+            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
+            this.coffeeshoplabel.Name = "coffeeshoplabel";
+            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
+            this.coffeeshoplabel.TabIndex = 9;
+            this.coffeeshoplabel.Text = "Coffee Shop";
+            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnArchivedOrders
             // 
@@ -180,6 +193,8 @@
             // 
             // paymentsTable
             // 
+            this.paymentsTable.AllowUserToAddRows = false;
+            this.paymentsTable.AllowUserToDeleteRows = false;
             this.paymentsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.paymentsTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.paymentsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -191,6 +206,7 @@
             this.statusColumn});
             this.paymentsTable.Location = new System.Drawing.Point(290, 119);
             this.paymentsTable.Name = "paymentsTable";
+            this.paymentsTable.ReadOnly = true;
             this.paymentsTable.RowHeadersWidth = 51;
             this.paymentsTable.RowTemplate.Height = 24;
             this.paymentsTable.Size = new System.Drawing.Size(945, 575);
@@ -201,30 +217,35 @@
             this.idColumn.HeaderText = "ID";
             this.idColumn.MinimumWidth = 6;
             this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
             // 
             // orderidColumn
             // 
             this.orderidColumn.HeaderText = "Order ID";
             this.orderidColumn.MinimumWidth = 6;
             this.orderidColumn.Name = "orderidColumn";
+            this.orderidColumn.ReadOnly = true;
             // 
             // amountColumn
             // 
             this.amountColumn.HeaderText = "Amount";
             this.amountColumn.MinimumWidth = 6;
             this.amountColumn.Name = "amountColumn";
+            this.amountColumn.ReadOnly = true;
             // 
             // paymentmethodColumn
             // 
             this.paymentmethodColumn.HeaderText = "Payment Method";
             this.paymentmethodColumn.MinimumWidth = 6;
             this.paymentmethodColumn.Name = "paymentmethodColumn";
+            this.paymentmethodColumn.ReadOnly = true;
             // 
             // statusColumn
             // 
             this.statusColumn.HeaderText = "Status";
             this.statusColumn.MinimumWidth = 6;
             this.statusColumn.Name = "statusColumn";
+            this.statusColumn.ReadOnly = true;
             // 
             // button1
             // 
@@ -238,30 +259,23 @@
             this.button1.TabIndex = 27;
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // searchtextBox
+            // paymentmethodLabel
             // 
-            this.searchtextBox.Location = new System.Drawing.Point(362, 83);
-            this.searchtextBox.Name = "searchtextBox";
-            this.searchtextBox.Size = new System.Drawing.Size(202, 22);
-            this.searchtextBox.TabIndex = 28;
-            // 
-            // searchLabel
-            // 
-            this.searchLabel.AutoSize = true;
-            this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.searchLabel.Location = new System.Drawing.Point(287, 84);
-            this.searchLabel.Name = "searchLabel";
-            this.searchLabel.Size = new System.Drawing.Size(59, 18);
-            this.searchLabel.TabIndex = 29;
-            this.searchLabel.Text = "Search:";
-            this.searchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.paymentmethodLabel.AutoSize = true;
+            this.paymentmethodLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paymentmethodLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.paymentmethodLabel.Location = new System.Drawing.Point(287, 85);
+            this.paymentmethodLabel.Name = "paymentmethodLabel";
+            this.paymentmethodLabel.Size = new System.Drawing.Size(124, 18);
+            this.paymentmethodLabel.TabIndex = 29;
+            this.paymentmethodLabel.Text = "Payment Method:";
+            this.paymentmethodLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // statusLabel
             // 
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(598, 84);
+            this.statusLabel.Location = new System.Drawing.Point(634, 85);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(54, 18);
             this.statusLabel.TabIndex = 30;
@@ -274,23 +288,22 @@
             "Pending",
             "Paid",
             "Failed"});
-            this.statuscomboBox.Location = new System.Drawing.Point(668, 82);
+            this.statuscomboBox.Location = new System.Drawing.Point(704, 83);
             this.statuscomboBox.Name = "statuscomboBox";
             this.statuscomboBox.Size = new System.Drawing.Size(183, 24);
             this.statuscomboBox.TabIndex = 31;
             // 
-            // coffeeshoplabel
+            // paymentmethodcomboBox
             // 
-            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
-            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
-            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
-            this.coffeeshoplabel.Name = "coffeeshoplabel";
-            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
-            this.coffeeshoplabel.TabIndex = 9;
-            this.coffeeshoplabel.Text = "Coffee Shop";
-            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.paymentmethodcomboBox.FormattingEnabled = true;
+            this.paymentmethodcomboBox.Items.AddRange(new object[] {
+            "Pending",
+            "Paid",
+            "Failed"});
+            this.paymentmethodcomboBox.Location = new System.Drawing.Point(429, 83);
+            this.paymentmethodcomboBox.Name = "paymentmethodcomboBox";
+            this.paymentmethodcomboBox.Size = new System.Drawing.Size(183, 24);
+            this.paymentmethodcomboBox.TabIndex = 32;
             // 
             // FormPayments
             // 
@@ -299,10 +312,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1274, 761);
+            this.Controls.Add(this.paymentmethodcomboBox);
             this.Controls.Add(this.statuscomboBox);
             this.Controls.Add(this.statusLabel);
-            this.Controls.Add(this.searchLabel);
-            this.Controls.Add(this.searchtextBox);
+            this.Controls.Add(this.paymentmethodLabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.paymentsTable);
             this.Controls.Add(this.btnEdit);
@@ -340,10 +353,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn paymentmethodColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusColumn;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox searchtextBox;
-        private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.Label paymentmethodLabel;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.ComboBox statuscomboBox;
         private System.Windows.Forms.Label coffeeshoplabel;
+        private System.Windows.Forms.ComboBox paymentmethodcomboBox;
     }
 }

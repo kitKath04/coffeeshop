@@ -30,16 +30,16 @@
         {
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDiscard = new System.Windows.Forms.Button();
-            this.textBoxStatus = new System.Windows.Forms.TextBox();
-            this.textBoxPaymentMethod = new System.Windows.Forms.TextBox();
             this.textBoxAmount = new System.Windows.Forms.TextBox();
-            this.textBoxOrderID = new System.Windows.Forms.TextBox();
             this.labelAmount = new System.Windows.Forms.Label();
             this.labelPymentMethod = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelOrderID = new System.Windows.Forms.Label();
             this.labelEditPayment = new System.Windows.Forms.Label();
+            this.paymentmethodcomboBox = new System.Windows.Forms.ComboBox();
+            this.statuscomboBox = new System.Windows.Forms.ComboBox();
+            this.textBoxOrderID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSave
@@ -67,51 +67,21 @@
             this.btnDiscard.UseVisualStyleBackColor = false;
             this.btnDiscard.Click += new System.EventHandler(this.btnDiscard_Click);
             // 
-            // textBoxStatus
-            // 
-            this.textBoxStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxStatus.Location = new System.Drawing.Point(41, 340);
-            this.textBoxStatus.Multiline = true;
-            this.textBoxStatus.Name = "textBoxStatus";
-            this.textBoxStatus.Size = new System.Drawing.Size(421, 35);
-            this.textBoxStatus.TabIndex = 34;
-            this.textBoxStatus.Text = "Paid";
-            // 
-            // textBoxPaymentMethod
-            // 
-            this.textBoxPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPaymentMethod.Location = new System.Drawing.Point(41, 257);
-            this.textBoxPaymentMethod.Multiline = true;
-            this.textBoxPaymentMethod.Name = "textBoxPaymentMethod";
-            this.textBoxPaymentMethod.Size = new System.Drawing.Size(421, 35);
-            this.textBoxPaymentMethod.TabIndex = 33;
-            this.textBoxPaymentMethod.Text = "Cash";
-            // 
             // textBoxAmount
             // 
             this.textBoxAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAmount.Location = new System.Drawing.Point(41, 174);
+            this.textBoxAmount.Location = new System.Drawing.Point(41, 184);
             this.textBoxAmount.Multiline = true;
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.Size = new System.Drawing.Size(421, 35);
             this.textBoxAmount.TabIndex = 32;
             this.textBoxAmount.Text = "Php 350.00";
             // 
-            // textBoxOrderID
-            // 
-            this.textBoxOrderID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxOrderID.Location = new System.Drawing.Point(41, 94);
-            this.textBoxOrderID.Multiline = true;
-            this.textBoxOrderID.Name = "textBoxOrderID";
-            this.textBoxOrderID.Size = new System.Drawing.Size(421, 35);
-            this.textBoxOrderID.TabIndex = 31;
-            this.textBoxOrderID.Text = "1";
-            // 
             // labelAmount
             // 
             this.labelAmount.AutoSize = true;
             this.labelAmount.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAmount.Location = new System.Drawing.Point(37, 152);
+            this.labelAmount.Location = new System.Drawing.Point(37, 157);
             this.labelAmount.Name = "labelAmount";
             this.labelAmount.Size = new System.Drawing.Size(71, 19);
             this.labelAmount.TabIndex = 30;
@@ -121,7 +91,7 @@
             // 
             this.labelPymentMethod.AutoSize = true;
             this.labelPymentMethod.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPymentMethod.Location = new System.Drawing.Point(37, 235);
+            this.labelPymentMethod.Location = new System.Drawing.Point(37, 244);
             this.labelPymentMethod.Name = "labelPymentMethod";
             this.labelPymentMethod.Size = new System.Drawing.Size(134, 19);
             this.labelPymentMethod.TabIndex = 29;
@@ -131,7 +101,7 @@
             // 
             this.labelStatus.AutoSize = true;
             this.labelStatus.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStatus.Location = new System.Drawing.Point(37, 318);
+            this.labelStatus.Location = new System.Drawing.Point(37, 321);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(57, 19);
             this.labelStatus.TabIndex = 28;
@@ -141,7 +111,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(313, 293);
+            this.label3.Location = new System.Drawing.Point(313, 300);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 16);
             this.label3.TabIndex = 27;
@@ -166,16 +136,42 @@
             this.labelEditPayment.TabIndex = 25;
             this.labelEditPayment.Text = "Edit Payment";
             // 
+            // paymentmethodcomboBox
+            // 
+            this.paymentmethodcomboBox.FormattingEnabled = true;
+            this.paymentmethodcomboBox.Location = new System.Drawing.Point(41, 273);
+            this.paymentmethodcomboBox.Name = "paymentmethodcomboBox";
+            this.paymentmethodcomboBox.Size = new System.Drawing.Size(421, 24);
+            this.paymentmethodcomboBox.TabIndex = 37;
+            // 
+            // statuscomboBox
+            // 
+            this.statuscomboBox.FormattingEnabled = true;
+            this.statuscomboBox.Location = new System.Drawing.Point(41, 350);
+            this.statuscomboBox.Name = "statuscomboBox";
+            this.statuscomboBox.Size = new System.Drawing.Size(421, 24);
+            this.statuscomboBox.TabIndex = 38;
+            // 
+            // textBoxOrderID
+            // 
+            this.textBoxOrderID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxOrderID.Location = new System.Drawing.Point(41, 99);
+            this.textBoxOrderID.Multiline = true;
+            this.textBoxOrderID.Name = "textBoxOrderID";
+            this.textBoxOrderID.Size = new System.Drawing.Size(421, 35);
+            this.textBoxOrderID.TabIndex = 31;
+            this.textBoxOrderID.Text = "1";
+            // 
             // FormEditPayments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(502, 472);
+            this.Controls.Add(this.statuscomboBox);
+            this.Controls.Add(this.paymentmethodcomboBox);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDiscard);
-            this.Controls.Add(this.textBoxStatus);
-            this.Controls.Add(this.textBoxPaymentMethod);
             this.Controls.Add(this.textBoxAmount);
             this.Controls.Add(this.textBoxOrderID);
             this.Controls.Add(this.labelAmount);
@@ -198,15 +194,15 @@
 
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDiscard;
-        private System.Windows.Forms.TextBox textBoxStatus;
-        private System.Windows.Forms.TextBox textBoxPaymentMethod;
         private System.Windows.Forms.TextBox textBoxAmount;
-        private System.Windows.Forms.TextBox textBoxOrderID;
         private System.Windows.Forms.Label labelAmount;
         private System.Windows.Forms.Label labelPymentMethod;
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelOrderID;
         private System.Windows.Forms.Label labelEditPayment;
+        private System.Windows.Forms.ComboBox paymentmethodcomboBox;
+        private System.Windows.Forms.ComboBox statuscomboBox;
+        private System.Windows.Forms.TextBox textBoxOrderID;
     }
 }

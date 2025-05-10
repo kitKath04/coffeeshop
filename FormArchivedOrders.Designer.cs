@@ -41,11 +41,6 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.labelArchivedOrders = new System.Windows.Forms.Label();
             this.archivedordersTable = new System.Windows.Forms.DataGridView();
-            this.exportbutton = new System.Windows.Forms.Button();
-            this.statuscomboBox = new System.Windows.Forms.ComboBox();
-            this.statusLabel = new System.Windows.Forms.Label();
-            this.searchLabel = new System.Windows.Forms.Label();
-            this.searchtextBox = new System.Windows.Forms.TextBox();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderitemsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +48,9 @@
             this.amountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.archiveddateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exportbutton = new System.Windows.Forms.Button();
+            this.searchLabel = new System.Windows.Forms.Label();
+            this.searchtextBox = new System.Windows.Forms.TextBox();
             this.archivedordersSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.archivedordersTable)).BeginInit();
             this.SuspendLayout();
@@ -200,59 +198,6 @@
             this.archivedordersTable.Size = new System.Drawing.Size(945, 575);
             this.archivedordersTable.TabIndex = 19;
             // 
-            // exportbutton
-            // 
-            this.exportbutton.BackColor = System.Drawing.Color.Black;
-            this.exportbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.exportbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.exportbutton.Image = ((System.Drawing.Image)(resources.GetObject("exportbutton.Image")));
-            this.exportbutton.Location = new System.Drawing.Point(1196, 69);
-            this.exportbutton.Name = "exportbutton";
-            this.exportbutton.Size = new System.Drawing.Size(39, 34);
-            this.exportbutton.TabIndex = 22;
-            this.exportbutton.UseVisualStyleBackColor = false;
-            // 
-            // statuscomboBox
-            // 
-            this.statuscomboBox.FormattingEnabled = true;
-            this.statuscomboBox.Items.AddRange(new object[] {
-            "Pending",
-            "Completed",
-            "Canceled"});
-            this.statuscomboBox.Location = new System.Drawing.Point(669, 75);
-            this.statuscomboBox.Name = "statuscomboBox";
-            this.statuscomboBox.Size = new System.Drawing.Size(183, 24);
-            this.statuscomboBox.TabIndex = 35;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(599, 77);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(54, 18);
-            this.statusLabel.TabIndex = 34;
-            this.statusLabel.Text = "Status:";
-            // 
-            // searchLabel
-            // 
-            this.searchLabel.AutoSize = true;
-            this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.searchLabel.Location = new System.Drawing.Point(288, 77);
-            this.searchLabel.Name = "searchLabel";
-            this.searchLabel.Size = new System.Drawing.Size(59, 18);
-            this.searchLabel.TabIndex = 33;
-            this.searchLabel.Text = "Search:";
-            this.searchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // searchtextBox
-            // 
-            this.searchtextBox.Location = new System.Drawing.Point(363, 76);
-            this.searchtextBox.Name = "searchtextBox";
-            this.searchtextBox.Size = new System.Drawing.Size(202, 22);
-            this.searchtextBox.TabIndex = 32;
-            // 
             // idColumn
             // 
             this.idColumn.HeaderText = "Order ID";
@@ -295,14 +240,43 @@
             this.archiveddateColumn.MinimumWidth = 6;
             this.archiveddateColumn.Name = "archiveddateColumn";
             // 
+            // exportbutton
+            // 
+            this.exportbutton.BackColor = System.Drawing.Color.Black;
+            this.exportbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.exportbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.exportbutton.Image = ((System.Drawing.Image)(resources.GetObject("exportbutton.Image")));
+            this.exportbutton.Location = new System.Drawing.Point(1196, 69);
+            this.exportbutton.Name = "exportbutton";
+            this.exportbutton.Size = new System.Drawing.Size(39, 34);
+            this.exportbutton.TabIndex = 22;
+            this.exportbutton.UseVisualStyleBackColor = false;
+            // 
+            // searchLabel
+            // 
+            this.searchLabel.AutoSize = true;
+            this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.searchLabel.Location = new System.Drawing.Point(288, 77);
+            this.searchLabel.Name = "searchLabel";
+            this.searchLabel.Size = new System.Drawing.Size(59, 18);
+            this.searchLabel.TabIndex = 33;
+            this.searchLabel.Text = "Search:";
+            this.searchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // searchtextBox
+            // 
+            this.searchtextBox.Location = new System.Drawing.Point(363, 76);
+            this.searchtextBox.Name = "searchtextBox";
+            this.searchtextBox.Size = new System.Drawing.Size(202, 22);
+            this.searchtextBox.TabIndex = 32;
+            // 
             // FormArchivedOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1274, 761);
-            this.Controls.Add(this.statuscomboBox);
-            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.searchtextBox);
             this.Controls.Add(this.exportbutton);
@@ -335,8 +309,6 @@
         private System.Windows.Forms.Label labelArchivedOrders;
         private System.Windows.Forms.DataGridView archivedordersTable;
         private System.Windows.Forms.Button exportbutton;
-        private System.Windows.Forms.ComboBox statuscomboBox;
-        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.TextBox searchtextBox;
         private System.Windows.Forms.Label coffeeshoplabel;

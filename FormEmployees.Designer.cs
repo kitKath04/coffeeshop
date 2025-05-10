@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmployees));
             this.employeesSidebar = new System.Windows.Forms.GroupBox();
+            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.btnArchivedOrders = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
@@ -41,13 +42,11 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.labelID = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.btnAddProduct = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.positiontextBox = new System.Windows.Forms.TextBox();
+            this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.phonenotextBox = new System.Windows.Forms.TextBox();
+            this.emailtextBox = new System.Windows.Forms.TextBox();
+            this.nametextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelPhoneNo = new System.Windows.Forms.Label();
@@ -61,11 +60,8 @@
             this.phonenoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.positionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exportbutton = new System.Windows.Forms.Button();
-            this.namecomboBox = new System.Windows.Forms.ComboBox();
-            this.nameLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchtextBox = new System.Windows.Forms.TextBox();
-            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.employeesSidebar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeesTable)).BeginInit();
@@ -88,7 +84,19 @@
             this.employeesSidebar.Size = new System.Drawing.Size(254, 762);
             this.employeesSidebar.TabIndex = 1;
             this.employeesSidebar.TabStop = false;
-            this.employeesSidebar.Enter += new System.EventHandler(this.employeesSidebar_Enter);
+            // 
+            // coffeeshoplabel
+            // 
+            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
+            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
+            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
+            this.coffeeshoplabel.Name = "coffeeshoplabel";
+            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
+            this.coffeeshoplabel.TabIndex = 9;
+            this.coffeeshoplabel.Text = "Coffee Shop";
+            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnArchivedOrders
             // 
@@ -182,6 +190,7 @@
             this.btnDelete.TabIndex = 16;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -198,13 +207,11 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.labelID);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.btnAddProduct);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.positiontextBox);
+            this.groupBox1.Controls.Add(this.btnAddEmployee);
+            this.groupBox1.Controls.Add(this.phonenotextBox);
+            this.groupBox1.Controls.Add(this.emailtextBox);
+            this.groupBox1.Controls.Add(this.nametextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.labelEmail);
             this.groupBox1.Controls.Add(this.labelPhoneNo);
@@ -216,72 +223,54 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             // 
-            // textBox5
+            // positiontextBox
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(95, 49);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(333, 30);
-            this.textBox5.TabIndex = 15;
+            this.positiontextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.positiontextBox.Location = new System.Drawing.Point(604, 105);
+            this.positiontextBox.Multiline = true;
+            this.positiontextBox.Name = "positiontextBox";
+            this.positiontextBox.Size = new System.Drawing.Size(333, 30);
+            this.positiontextBox.TabIndex = 13;
             // 
-            // labelID
+            // btnAddEmployee
             // 
-            this.labelID.AutoSize = true;
-            this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelID.Location = new System.Drawing.Point(24, 56);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(26, 16);
-            this.labelID.TabIndex = 14;
-            this.labelID.Text = "ID:";
+            this.btnAddEmployee.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAddEmployee.Location = new System.Drawing.Point(832, 157);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(105, 31);
+            this.btnAddEmployee.TabIndex = 3;
+            this.btnAddEmployee.Text = "Add";
+            this.btnAddEmployee.UseVisualStyleBackColor = false;
+            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
             // 
-            // textBox4
+            // phonenotextBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(604, 100);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(333, 30);
-            this.textBox4.TabIndex = 13;
+            this.phonenotextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phonenotextBox.Location = new System.Drawing.Point(604, 54);
+            this.phonenotextBox.Multiline = true;
+            this.phonenotextBox.Name = "phonenotextBox";
+            this.phonenotextBox.Size = new System.Drawing.Size(333, 30);
+            this.phonenotextBox.TabIndex = 12;
             // 
-            // btnAddProduct
+            // emailtextBox
             // 
-            this.btnAddProduct.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAddProduct.Location = new System.Drawing.Point(832, 157);
-            this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(105, 31);
-            this.btnAddProduct.TabIndex = 3;
-            this.btnAddProduct.Text = "Add";
-            this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.emailtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailtextBox.Location = new System.Drawing.Point(95, 109);
+            this.emailtextBox.Multiline = true;
+            this.emailtextBox.Name = "emailtextBox";
+            this.emailtextBox.Size = new System.Drawing.Size(333, 30);
+            this.emailtextBox.TabIndex = 11;
             // 
-            // textBox3
+            // nametextBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(604, 49);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(333, 30);
-            this.textBox3.TabIndex = 12;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(95, 154);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(333, 30);
-            this.textBox2.TabIndex = 11;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(95, 100);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(333, 30);
-            this.textBox1.TabIndex = 10;
+            this.nametextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nametextBox.Location = new System.Drawing.Point(95, 55);
+            this.nametextBox.Multiline = true;
+            this.nametextBox.Name = "nametextBox";
+            this.nametextBox.Size = new System.Drawing.Size(333, 30);
+            this.nametextBox.TabIndex = 10;
             // 
             // label1
             // 
@@ -297,7 +286,7 @@
             // 
             this.labelEmail.AutoSize = true;
             this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmail.Location = new System.Drawing.Point(24, 160);
+            this.labelEmail.Location = new System.Drawing.Point(24, 115);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(50, 16);
             this.labelEmail.TabIndex = 8;
@@ -307,7 +296,7 @@
             // 
             this.labelPhoneNo.AutoSize = true;
             this.labelPhoneNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPhoneNo.Location = new System.Drawing.Point(499, 56);
+            this.labelPhoneNo.Location = new System.Drawing.Point(499, 61);
             this.labelPhoneNo.Name = "labelPhoneNo";
             this.labelPhoneNo.Size = new System.Drawing.Size(83, 16);
             this.labelPhoneNo.TabIndex = 7;
@@ -317,7 +306,7 @@
             // 
             this.labelPosition.AutoSize = true;
             this.labelPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPosition.Location = new System.Drawing.Point(499, 106);
+            this.labelPosition.Location = new System.Drawing.Point(499, 111);
             this.labelPosition.Name = "labelPosition";
             this.labelPosition.Size = new System.Drawing.Size(67, 16);
             this.labelPosition.TabIndex = 6;
@@ -327,7 +316,7 @@
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(24, 106);
+            this.labelName.Location = new System.Drawing.Point(24, 61);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(52, 16);
             this.labelName.TabIndex = 5;
@@ -405,51 +394,6 @@
             this.exportbutton.TabIndex = 21;
             this.exportbutton.UseVisualStyleBackColor = false;
             // 
-            // namecomboBox
-            // 
-            this.namecomboBox.FormattingEnabled = true;
-            this.namecomboBox.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z"});
-            this.namecomboBox.Location = new System.Drawing.Point(670, 49);
-            this.namecomboBox.Name = "namecomboBox";
-            this.namecomboBox.Size = new System.Drawing.Size(183, 24);
-            this.namecomboBox.TabIndex = 35;
-            // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel.Location = new System.Drawing.Point(600, 51);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(52, 18);
-            this.nameLabel.TabIndex = 34;
-            this.nameLabel.Text = "Name:";
-            // 
             // searchLabel
             // 
             this.searchLabel.AutoSize = true;
@@ -468,19 +412,7 @@
             this.searchtextBox.Name = "searchtextBox";
             this.searchtextBox.Size = new System.Drawing.Size(202, 22);
             this.searchtextBox.TabIndex = 32;
-            // 
-            // coffeeshoplabel
-            // 
-            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
-            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
-            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
-            this.coffeeshoplabel.Name = "coffeeshoplabel";
-            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
-            this.coffeeshoplabel.TabIndex = 9;
-            this.coffeeshoplabel.Text = "Coffee Shop";
-            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.searchtextBox.TextChanged += new System.EventHandler(this.searchtextBox_TextChanged);
             // 
             // FormEmployees
             // 
@@ -488,8 +420,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1274, 761);
-            this.Controls.Add(this.namecomboBox);
-            this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.searchtextBox);
             this.Controls.Add(this.exportbutton);
@@ -527,13 +457,11 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label labelID;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button btnAddProduct;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox positiontextBox;
+        private System.Windows.Forms.Button btnAddEmployee;
+        private System.Windows.Forms.TextBox phonenotextBox;
+        private System.Windows.Forms.TextBox emailtextBox;
+        private System.Windows.Forms.TextBox nametextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Label labelPhoneNo;
@@ -547,8 +475,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phonenoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn positionColumn;
         private System.Windows.Forms.Button exportbutton;
-        private System.Windows.Forms.ComboBox namecomboBox;
-        private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.TextBox searchtextBox;
         private System.Windows.Forms.Label coffeeshoplabel;

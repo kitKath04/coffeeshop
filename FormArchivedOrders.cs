@@ -17,6 +17,7 @@ namespace EDP_WinProject
         {
             InitializeComponent();
             this.Load += new EventHandler(FormArchivedOrders_Load);
+            searchtextBox.TextChanged += new EventHandler(searchtextBox_TextChanged);
         }
 
         private void FormArchivedOrders_Load(object sender, EventArgs e)
@@ -24,7 +25,7 @@ namespace EDP_WinProject
             LoadArchivedOrders();
         }
 
-        private void LoadArchivedOrders()
+        private void LoadArchivedOrders(string nameFilter = "")
         {
             string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
 
@@ -47,10 +48,13 @@ namespace EDP_WinProject
                 LEFT JOIN customers c ON ao.customers_id = c.customers_id
                 LEFT JOIN orders_items oi ON ao.orders_id = oi.orders_id
                 LEFT JOIN products p ON oi.products_id = p.products_id
+                WHERE CONCAT(c.fname, ' ', c.lname) LIKE @nameFilter
                 GROUP BY ao.orders_id
                 ORDER BY ao.archived_date DESC";
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    adapter.SelectCommand.Parameters.AddWithValue("@nameFilter", "%" + nameFilter + "%");
+
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
@@ -87,6 +91,11 @@ namespace EDP_WinProject
             }
         }
 
+        private void searchtextBox_TextChanged(object sender, EventArgs e)
+        {
+            string nameFilter = searchtextBox.Text.Trim();
+            LoadArchivedOrders(nameFilter);
+        }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {

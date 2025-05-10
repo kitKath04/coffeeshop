@@ -17,14 +17,38 @@ namespace EDP_WinProject
         {
             InitializeComponent();
             this.Load += new EventHandler(FormOrders_Load);
+            ordersTable.CellValueChanged += OrdersTable_CellValueChanged;
+            ordersTable.CurrentCellDirtyStateChanged += OrdersTable_CurrentCellDirtyStateChanged;
+            searchtextBox.TextChanged += new EventHandler(SearchTextBox_TextChanged);
+            statuscomboBox.SelectedIndexChanged += new EventHandler(StatusComboBox_SelectedIndexChanged);
         }
 
         private void FormOrders_Load(object sender, EventArgs e)
         {
+            // Populate the statusComboBox with status options
+            statuscomboBox.Items.Add("All");
+            statuscomboBox.Items.Add("Pending");
+            statuscomboBox.Items.Add("Completed");
+            statuscomboBox.Items.Add("Canceled");
+            statuscomboBox.SelectedItem = "All"; // Default to "All"
+
             LoadOrders();
         }
 
-        private void LoadOrders()
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string customerNameFilter = searchtextBox.Text.Trim();
+            LoadOrders(customerNameFilter);
+        }
+
+        private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedStatus = statuscomboBox.SelectedItem.ToString();
+            LoadOrders(status: selectedStatus);
+        }
+
+
+        private void LoadOrders(string customerNameFilter = "", string status = "All")
         {
             string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
 
@@ -46,39 +70,140 @@ namespace EDP_WinProject
                 LEFT JOIN customers c ON o.customers_id = c.customers_id
                 LEFT JOIN orders_items oi ON o.orders_id = oi.orders_id
                 LEFT JOIN products p ON oi.products_id = p.products_id
+                WHERE CONCAT(c.fname, ' ', c.lname) LIKE @customerNameFilter";
+
+                    if (status != "All")
+                    {
+                        query += " AND o.status = @status";
+                    }
+
+                    query += @"
                 GROUP BY o.orders_id
                 ORDER BY o.order_date DESC";
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    adapter.SelectCommand.Parameters.AddWithValue("@customerNameFilter", "%" + customerNameFilter + "%");
+                    adapter.SelectCommand.Parameters.AddWithValue("@status", status);
+
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
                     ordersTable.AutoGenerateColumns = false;
                     ordersTable.Columns.Clear();
 
-                    ordersTable.Columns.Add("ID", "ID");
-                    ordersTable.Columns["ID"].DataPropertyName = "ID";
+                    // Add ID, Customer, Order Items, Date, Amount columns
+                    ordersTable.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "ID",
+                        HeaderText = "ID",
+                        DataPropertyName = "ID",
+                        ReadOnly = true
+                    });
 
-                    ordersTable.Columns.Add("Customer", "Customer");
-                    ordersTable.Columns["Customer"].DataPropertyName = "Customer";
+                    ordersTable.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "Customer",
+                        HeaderText = "Customer",
+                        DataPropertyName = "Customer",
+                        ReadOnly = true
+                    });
 
-                    ordersTable.Columns.Add("OrderItems", "Order Items");
-                    ordersTable.Columns["OrderItems"].DataPropertyName = "Order Items";
+                    ordersTable.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "OrderItems",
+                        HeaderText = "Order Items",
+                        DataPropertyName = "Order Items",
+                        ReadOnly = true
+                    });
 
-                    ordersTable.Columns.Add("Date", "Date");
-                    ordersTable.Columns["Date"].DataPropertyName = "Date";
+                    ordersTable.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "Date",
+                        HeaderText = "Date",
+                        DataPropertyName = "Date",
+                        ReadOnly = true
+                    });
 
-                    ordersTable.Columns.Add("Amount", "Amount");
-                    ordersTable.Columns["Amount"].DataPropertyName = "Amount";
+                    ordersTable.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "Amount",
+                        HeaderText = "Amount",
+                        DataPropertyName = "Amount",
+                        ReadOnly = true
+                    });
 
-                    ordersTable.Columns.Add("Status", "Status");
-                    ordersTable.Columns["Status"].DataPropertyName = "Status";
+                    // Add ComboBox column for Status
+                    var statusCol = new DataGridViewComboBoxColumn
+                    {
+                        Name = "Status",
+                        HeaderText = "Status",
+                        DataPropertyName = "Status",
+                        DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton,
+                        FlatStyle = FlatStyle.Flat
+                    };
+                    statusCol.Items.AddRange("Pending", "Completed", "Canceled");
+                    ordersTable.Columns.Add(statusCol);
 
                     ordersTable.DataSource = dt;
+
+                    // Set all columns ReadOnly
+                    ordersTable.ReadOnly = false;
+                    foreach (DataGridViewColumn column in ordersTable.Columns)
+                    {
+                        if (column.Name != "Status") // Only allow editing on Status column
+                            column.ReadOnly = true;
+                    }
+
+                    ordersTable.EditMode = DataGridViewEditMode.EditOnEnter;
+                    ordersTable.Columns["Status"].ReadOnly = false;
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error loading orders: " + ex.Message);
+                }
+            }
+        }
+
+        private void OrdersTable_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (ordersTable.IsCurrentCellDirty)
+            {
+                ordersTable.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void OrdersTable_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (ordersTable.Columns[e.ColumnIndex].Name == "Status")
+            {
+                int orderId = Convert.ToInt32(ordersTable.Rows[e.RowIndex].Cells["ID"].Value);
+                string newStatus = ordersTable.Rows[e.RowIndex].Cells["Status"].Value.ToString();
+                UpdateOrderStatus(orderId, newStatus);
+            }
+        }
+
+        private void UpdateOrderStatus(int orderId, string newStatus)
+        {
+            string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string updateQuery = "UPDATE orders SET status = @status WHERE orders_id = @id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(updateQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@status", newStatus);
+                        cmd.Parameters.AddWithValue("@id", orderId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error updating status: " + ex.Message);
                 }
             }
         }

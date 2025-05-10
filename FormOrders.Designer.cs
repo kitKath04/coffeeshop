@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOrders));
-            this.btnEdit = new System.Windows.Forms.Button();
             this.labelOrders = new System.Windows.Forms.Label();
             this.btnArchivedOrders = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -40,34 +39,22 @@
             this.btnOrders = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.ordersSidebar = new System.Windows.Forms.GroupBox();
+            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.ordersTable = new System.Windows.Forms.DataGridView();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderitemsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exportbutton = new System.Windows.Forms.Button();
             this.statuscomboBox = new System.Windows.Forms.ComboBox();
             this.statusLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchtextBox = new System.Windows.Forms.TextBox();
-            this.coffeeshoplabel = new System.Windows.Forms.Label();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderitemsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ordersSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersTable)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(1166, 66);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(70, 30);
-            this.btnEdit.TabIndex = 16;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // labelOrders
             // 
@@ -179,8 +166,23 @@
             this.ordersSidebar.TabIndex = 12;
             this.ordersSidebar.TabStop = false;
             // 
+            // coffeeshoplabel
+            // 
+            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
+            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
+            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
+            this.coffeeshoplabel.Name = "coffeeshoplabel";
+            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
+            this.coffeeshoplabel.TabIndex = 8;
+            this.coffeeshoplabel.Text = "Coffee Shop";
+            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // ordersTable
             // 
+            this.ordersTable.AllowUserToAddRows = false;
+            this.ordersTable.AllowUserToDeleteRows = false;
             this.ordersTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ordersTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ordersTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -197,6 +199,55 @@
             this.ordersTable.RowTemplate.Height = 24;
             this.ordersTable.Size = new System.Drawing.Size(945, 575);
             this.ordersTable.TabIndex = 17;
+            // 
+            // exportbutton
+            // 
+            this.exportbutton.BackColor = System.Drawing.Color.Black;
+            this.exportbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.exportbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.exportbutton.Image = ((System.Drawing.Image)(resources.GetObject("exportbutton.Image")));
+            this.exportbutton.Location = new System.Drawing.Point(1197, 67);
+            this.exportbutton.Name = "exportbutton";
+            this.exportbutton.Size = new System.Drawing.Size(39, 34);
+            this.exportbutton.TabIndex = 21;
+            this.exportbutton.UseVisualStyleBackColor = false;
+            // 
+            // statuscomboBox
+            // 
+            this.statuscomboBox.FormattingEnabled = true;
+            this.statuscomboBox.Location = new System.Drawing.Point(668, 73);
+            this.statuscomboBox.Name = "statuscomboBox";
+            this.statuscomboBox.Size = new System.Drawing.Size(183, 24);
+            this.statuscomboBox.TabIndex = 39;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLabel.Location = new System.Drawing.Point(598, 75);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(54, 18);
+            this.statusLabel.TabIndex = 38;
+            this.statusLabel.Text = "Status:";
+            // 
+            // searchLabel
+            // 
+            this.searchLabel.AutoSize = true;
+            this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.searchLabel.Location = new System.Drawing.Point(287, 75);
+            this.searchLabel.Name = "searchLabel";
+            this.searchLabel.Size = new System.Drawing.Size(59, 18);
+            this.searchLabel.TabIndex = 37;
+            this.searchLabel.Text = "Search:";
+            this.searchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // searchtextBox
+            // 
+            this.searchtextBox.Location = new System.Drawing.Point(362, 74);
+            this.searchtextBox.Name = "searchtextBox";
+            this.searchtextBox.Size = new System.Drawing.Size(202, 22);
+            this.searchtextBox.TabIndex = 36;
             // 
             // idColumn
             // 
@@ -234,72 +285,6 @@
             this.statusColumn.MinimumWidth = 6;
             this.statusColumn.Name = "statusColumn";
             // 
-            // exportbutton
-            // 
-            this.exportbutton.BackColor = System.Drawing.Color.Black;
-            this.exportbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.exportbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.exportbutton.Image = ((System.Drawing.Image)(resources.GetObject("exportbutton.Image")));
-            this.exportbutton.Location = new System.Drawing.Point(1121, 62);
-            this.exportbutton.Name = "exportbutton";
-            this.exportbutton.Size = new System.Drawing.Size(39, 34);
-            this.exportbutton.TabIndex = 21;
-            this.exportbutton.UseVisualStyleBackColor = false;
-            // 
-            // statuscomboBox
-            // 
-            this.statuscomboBox.FormattingEnabled = true;
-            this.statuscomboBox.Items.AddRange(new object[] {
-            "Pending",
-            "Completed",
-            "Canceled"});
-            this.statuscomboBox.Location = new System.Drawing.Point(668, 73);
-            this.statuscomboBox.Name = "statuscomboBox";
-            this.statuscomboBox.Size = new System.Drawing.Size(183, 24);
-            this.statuscomboBox.TabIndex = 39;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(598, 75);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(54, 18);
-            this.statusLabel.TabIndex = 38;
-            this.statusLabel.Text = "Status:";
-            // 
-            // searchLabel
-            // 
-            this.searchLabel.AutoSize = true;
-            this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.searchLabel.Location = new System.Drawing.Point(287, 75);
-            this.searchLabel.Name = "searchLabel";
-            this.searchLabel.Size = new System.Drawing.Size(59, 18);
-            this.searchLabel.TabIndex = 37;
-            this.searchLabel.Text = "Search:";
-            this.searchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // searchtextBox
-            // 
-            this.searchtextBox.Location = new System.Drawing.Point(362, 74);
-            this.searchtextBox.Name = "searchtextBox";
-            this.searchtextBox.Size = new System.Drawing.Size(202, 22);
-            this.searchtextBox.TabIndex = 36;
-            // 
-            // coffeeshoplabel
-            // 
-            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
-            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
-            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
-            this.coffeeshoplabel.Name = "coffeeshoplabel";
-            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
-            this.coffeeshoplabel.TabIndex = 8;
-            this.coffeeshoplabel.Text = "Coffee Shop";
-            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // FormOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -312,7 +297,6 @@
             this.Controls.Add(this.searchtextBox);
             this.Controls.Add(this.exportbutton);
             this.Controls.Add(this.ordersTable);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.labelOrders);
             this.Controls.Add(this.ordersSidebar);
             this.MaximizeBox = false;
@@ -328,7 +312,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label labelOrders;
         private System.Windows.Forms.Button btnArchivedOrders;
         private System.Windows.Forms.Button btnLogout;
@@ -340,17 +323,17 @@
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.GroupBox ordersSidebar;
         private System.Windows.Forms.DataGridView ordersTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderitemsColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusColumn;
         private System.Windows.Forms.Button exportbutton;
         private System.Windows.Forms.ComboBox statuscomboBox;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.TextBox searchtextBox;
         private System.Windows.Forms.Label coffeeshoplabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderitemsColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn statusColumn;
     }
 }

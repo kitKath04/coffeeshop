@@ -38,22 +38,21 @@
             this.btnOrders = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.customersSidebar = new System.Windows.Forms.GroupBox();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.labelCustomers = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.customersTable = new System.Windows.Forms.DataGridView();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phonenoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastloginColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.exportbutton = new System.Windows.Forms.Button();
-            this.namecomboBox = new System.Windows.Forms.ComboBox();
+            this.statuscomboBox = new System.Windows.Forms.ComboBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchtextBox = new System.Windows.Forms.TextBox();
-            this.coffeeshoplabel = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.customersSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customersTable)).BeginInit();
             this.SuspendLayout();
@@ -156,17 +155,18 @@
             this.customersSidebar.TabIndex = 17;
             this.customersSidebar.TabStop = false;
             // 
-            // btnEdit
+            // coffeeshoplabel
             // 
-            this.btnEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(1089, 79);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(70, 30);
-            this.btnEdit.TabIndex = 20;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
+            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
+            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
+            this.coffeeshoplabel.Name = "coffeeshoplabel";
+            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
+            this.coffeeshoplabel.TabIndex = 9;
+            this.coffeeshoplabel.Text = "Coffee Shop";
+            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelCustomers
             // 
@@ -180,21 +180,10 @@
             this.labelCustomers.Text = "Customers";
             this.labelCustomers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.AllowDrop = true;
-            this.btnDelete.BackColor = System.Drawing.Color.Red;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDelete.Location = new System.Drawing.Point(1165, 79);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(70, 30);
-            this.btnDelete.TabIndex = 21;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            // 
             // customersTable
             // 
+            this.customersTable.AllowUserToAddRows = false;
+            this.customersTable.AllowUserToDeleteRows = false;
             this.customersTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.customersTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.customersTable.ColumnHeadersHeight = 29;
@@ -253,46 +242,23 @@
             this.exportbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.exportbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.exportbutton.Image = ((System.Drawing.Image)(resources.GetObject("exportbutton.Image")));
-            this.exportbutton.Location = new System.Drawing.Point(1044, 75);
+            this.exportbutton.Location = new System.Drawing.Point(1120, 78);
             this.exportbutton.Name = "exportbutton";
             this.exportbutton.Size = new System.Drawing.Size(39, 34);
             this.exportbutton.TabIndex = 22;
             this.exportbutton.UseVisualStyleBackColor = false;
             // 
-            // namecomboBox
+            // statuscomboBox
             // 
-            this.namecomboBox.FormattingEnabled = true;
-            this.namecomboBox.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z"});
-            this.namecomboBox.Location = new System.Drawing.Point(671, 85);
-            this.namecomboBox.Name = "namecomboBox";
-            this.namecomboBox.Size = new System.Drawing.Size(183, 24);
-            this.namecomboBox.TabIndex = 39;
+            this.statuscomboBox.FormattingEnabled = true;
+            this.statuscomboBox.Items.AddRange(new object[] {
+            "All",
+            "Active",
+            "Inactive"});
+            this.statuscomboBox.Location = new System.Drawing.Point(671, 85);
+            this.statuscomboBox.Name = "statuscomboBox";
+            this.statuscomboBox.Size = new System.Drawing.Size(183, 24);
+            this.statuscomboBox.TabIndex = 39;
             // 
             // nameLabel
             // 
@@ -300,9 +266,9 @@
             this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameLabel.Location = new System.Drawing.Point(601, 87);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(52, 18);
+            this.nameLabel.Size = new System.Drawing.Size(54, 18);
             this.nameLabel.TabIndex = 38;
-            this.nameLabel.Text = "Name:";
+            this.nameLabel.Text = "Status:";
             // 
             // searchLabel
             // 
@@ -323,18 +289,19 @@
             this.searchtextBox.Size = new System.Drawing.Size(202, 22);
             this.searchtextBox.TabIndex = 36;
             // 
-            // coffeeshoplabel
+            // btnDelete
             // 
-            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
-            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
-            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
-            this.coffeeshoplabel.Name = "coffeeshoplabel";
-            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
-            this.coffeeshoplabel.TabIndex = 9;
-            this.coffeeshoplabel.Text = "Coffee Shop";
-            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.AllowDrop = true;
+            this.btnDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDelete.Location = new System.Drawing.Point(1165, 82);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(70, 30);
+            this.btnDelete.TabIndex = 40;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // FormCustomers
             // 
@@ -342,14 +309,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1274, 761);
-            this.Controls.Add(this.namecomboBox);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.statuscomboBox);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.searchtextBox);
             this.Controls.Add(this.exportbutton);
             this.Controls.Add(this.customersTable);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.labelCustomers);
             this.Controls.Add(this.customersSidebar);
             this.MaximizeBox = false;
@@ -374,21 +340,20 @@
         private System.Windows.Forms.Button btnOrders;
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.GroupBox customersSidebar;
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label labelCustomers;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView customersTable;
+        private System.Windows.Forms.Button exportbutton;
+        private System.Windows.Forms.ComboBox statuscomboBox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.TextBox searchtextBox;
+        private System.Windows.Forms.Label coffeeshoplabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phonenoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastloginColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusColumn;
-        private System.Windows.Forms.Button exportbutton;
-        private System.Windows.Forms.ComboBox namecomboBox;
-        private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.Label searchLabel;
-        private System.Windows.Forms.TextBox searchtextBox;
-        private System.Windows.Forms.Label coffeeshoplabel;
+        private System.Windows.Forms.DataGridViewComboBoxColumn statusColumn;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

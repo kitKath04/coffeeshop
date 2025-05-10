@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EDP_WinProject
@@ -17,38 +11,50 @@ namespace EDP_WinProject
         {
             InitializeComponent();
             this.Load += new EventHandler(FormPayments_Load);
+            paymentmethodcomboBox.SelectedIndexChanged += new EventHandler(paymentmethodcomboBox_SelectedIndexChanged);
+            statuscomboBox.SelectedIndexChanged += new EventHandler(statuscomboBox_SelectedIndexChanged);
         }
 
         private void FormPayments_Load(object sender, EventArgs e)
         {
-            LoadPayments();
+            LoadPaymentMethodsFilter();
+            LoadStatusFilter();
+            LoadPayments(); // Initial load
         }
 
         private void LoadPayments()
         {
-            string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+            string selectedMethod = paymentmethodcomboBox.SelectedItem?.ToString();
+            string selectedStatus = statuscomboBox.SelectedItem?.ToString();
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            string connStr = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 try
                 {
                     conn.Open();
 
                     string query = @"
-                        SELECT 
-                            p.payments_id AS ID,
-                            o.orders_id AS `Order ID`,
-                            oi.subtotal_price AS Amount,
-                            pm.method_of_payment AS `Payment Method`,
-                            ps.status AS Status
-                        FROM payments p
-                        LEFT JOIN orders o ON p.orders_id = o.orders_id 
-                        LEFT JOIN orders_items oi ON p.ordersitems_id = oi.ordersitems_id
-                        LEFT JOIN payment_method pm ON p.payment_method = pm.paymentmethod_id
-                        LEFT JOIN payment_status ps ON p.payment_status = ps.paymentstatus_id";
+                    SELECT 
+                        p.payments_id AS ID,
+                        o.orders_id AS `Order ID`,
+                        oi.subtotal_price AS Amount,
+                        pm.method_of_payment AS `Payment Method`,
+                        ps.status AS Status
+                    FROM payments p
+                    LEFT JOIN orders o ON p.orders_id = o.orders_id 
+                    LEFT JOIN orders_items oi ON p.ordersitems_id = oi.ordersitems_id
+                    LEFT JOIN payment_method pm ON p.payment_method = pm.paymentmethod_id
+                    LEFT JOIN payment_status ps ON p.payment_status = ps.paymentstatus_id
+                    WHERE (@method = 'All' OR pm.method_of_payment = @method)
+                      AND (@status = 'All' OR ps.status = @status)";
 
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@method", selectedMethod ?? "All");
+                    cmd.Parameters.AddWithValue("@status", selectedStatus ?? "All");
 
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
@@ -77,6 +83,54 @@ namespace EDP_WinProject
                     MessageBox.Show("Error loading payments: " + ex.Message);
                 }
             }
+        }
+
+        private void LoadPaymentMethodsFilter()
+        {
+            string connStr = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT method_of_payment FROM payment_method", conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                paymentmethodcomboBox.Items.Clear();
+                paymentmethodcomboBox.Items.Add("All");
+                while (reader.Read())
+                {
+                    paymentmethodcomboBox.Items.Add(reader.GetString(0));
+                }
+                paymentmethodcomboBox.SelectedIndex = 0;
+            }
+        }
+
+        private void LoadStatusFilter()
+        {
+            string connStr = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT status FROM payment_status", conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                statuscomboBox.Items.Clear();
+                statuscomboBox.Items.Add("All");
+                while (reader.Read())
+                {
+                    statuscomboBox.Items.Add(reader.GetString(0));
+                }
+                statuscomboBox.SelectedIndex = 0;
+            }
+        }
+
+        // Event handler for paymentmethodcomboBox selection change
+        private void paymentmethodcomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadPayments();
+        }
+
+        // Event handler for statuscomboBox selection change
+        private void statuscomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadPayments();
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -137,9 +191,22 @@ namespace EDP_WinProject
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            FormEditPayments myform = new FormEditPayments();
-            myform.Show();
-            this.Hide();
+            if (paymentsTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = paymentsTable.SelectedRows[0];
+                string orderId = row.Cells["OrderID"].Value.ToString();
+                string amount = row.Cells["Amount"].Value.ToString();
+                string paymentMethod = row.Cells["PaymentMethod"].Value.ToString();
+                string status = row.Cells["Status"].Value.ToString();
+
+                FormEditPayments editForm = new FormEditPayments(orderId, amount, paymentMethod, status);
+                editForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Please select a payment to edit.");
+            }
         }
     }
 }

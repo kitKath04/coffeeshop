@@ -24,7 +24,7 @@ namespace EDP_WinProject
             LoadData(); // Call data loader
         }
 
-        private void LoadData()
+        private void LoadData(string search = "")
         {
             string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
 
@@ -34,15 +34,18 @@ namespace EDP_WinProject
                 {
                     conn.Open();
                     string query = @"
-                        SELECT 
-                            employees_id AS ID,
-                            CONCAT(fname, ' ', lname) AS Name,
-                            email AS Email,
-                            phone_num AS `Phone No.`,
-                            position AS Position
-                        FROM employees";
+                SELECT 
+                    employees_id AS ID,
+                    CONCAT(fname, ' ', lname) AS Name,
+                    email AS Email,
+                    phone_num AS `Phone No.`,
+                    position AS Position
+                FROM employees
+                WHERE CONCAT(fname, ' ', lname) LIKE @search";
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    adapter.SelectCommand.Parameters.AddWithValue("@search", "%" + search + "%");
+
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
@@ -71,6 +74,86 @@ namespace EDP_WinProject
                     MessageBox.Show("Error loading employee data: " + ex.Message);
                 }
             }
+        }
+
+        private void searchtextBox_TextChanged(object sender, EventArgs e)
+        {
+            LoadData(searchtextBox.Text.Trim());
+        }
+
+
+        private void AddEmployee()
+        {
+            string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+
+            string fullName = nametextBox.Text.Trim();
+            string[] names = fullName.Split(' ');
+
+            if (names.Length < 2)
+            {
+                MessageBox.Show("Please enter both first and last name.");
+                return;
+            }
+
+            string fname = names[0];
+            string lname = string.Join(" ", names.Skip(1));
+            string email = emailtextBox.Text.Trim();
+            string phone = phonenotextBox.Text.Trim();
+            string position = positiontextBox.Text.Trim();
+
+            if (fname == "" || lname == "" || email == "" || phone == "" || position == "")
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                INSERT INTO employees (fname, lname, email, phone_num, position)
+                VALUES (@fname, @lname, @email, @phone, @position)";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@fname", fname);
+                    cmd.Parameters.AddWithValue("@lname", lname);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@position", position);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Employee added successfully.");
+                        LoadData(); // Refresh table
+                        ClearInputs(); // Optionally clear textboxes
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add employee.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error adding employee: " + ex.Message);
+                }
+            }
+        }
+
+        private void ClearInputs()
+        {
+            nametextBox.Text = "";
+            emailtextBox.Text = "";
+            phonenotextBox.Text = "";
+            positiontextBox.Text = "";
+        }
+
+        private void btnAddEmployee_Click(object sender, EventArgs e)
+        {
+            AddEmployee();
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -131,14 +214,77 @@ namespace EDP_WinProject
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            FormEditEmployees myform = new FormEditEmployees();
-            myform.Show();
-            this.Hide();
+            if (employeesTable.CurrentRow != null)
+            {
+                int id = Convert.ToInt32(employeesTable.CurrentRow.Cells["ID"].Value);
+                string name = employeesTable.CurrentRow.Cells["Name"].Value.ToString();
+                string email = employeesTable.CurrentRow.Cells["Email"].Value.ToString();
+                string phone = employeesTable.CurrentRow.Cells["Phone"].Value.ToString();
+                string position = employeesTable.CurrentRow.Cells["Position"].Value.ToString();
+
+                FormEditEmployees editForm = new FormEditEmployees(id, name, email, phone, position);
+                editForm.ShowDialog();
+                LoadData(); // Refresh after editing
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee to edit.");
+            }
         }
 
-        private void employeesSidebar_Enter(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (employeesTable.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to delete this employee?",
+                    "Confirm Deletion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
 
+                if (result == DialogResult.Yes)
+                {
+                    int id = Convert.ToInt32(employeesTable.CurrentRow.Cells["ID"].Value);
+                    string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+
+                    using (MySqlConnection conn = new MySqlConnection(connectionString))
+                    {
+                        try
+                        {
+                            conn.Open();
+                            string query = "DELETE FROM employees WHERE employees_id = @id";
+
+                            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@id", id);
+                                int rowsAffected = cmd.ExecuteNonQuery();
+
+                                if (rowsAffected > 0)
+                                {
+                                    MessageBox.Show("Employee deleted successfully.");
+                                    LoadData(); // Refresh the table
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Deletion failed. Employee not found.");
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error deleting employee: " + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee to delete.");
+            }
         }
+
+
+
     }
 }
