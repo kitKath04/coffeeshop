@@ -183,6 +183,18 @@
     <Compile Include="FormProducts.Designer.cs">
       <DependentUpon>FormProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormResetCodeValidation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResetCodeValidation.Designer.cs">
+      <DependentUpon>FormResetCodeValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResetPassword.Designer.cs">
+      <DependentUpon>FormResetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSignUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +244,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormProducts.resx">
       <DependentUpon>FormProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResetCodeValidation.resx">
+      <DependentUpon>FormResetCodeValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResetPassword.resx">
+      <DependentUpon>FormResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSignUp.resx">
       <DependentUpon>FormSignUp.cs</DependentUpon>

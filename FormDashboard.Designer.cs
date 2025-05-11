@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDashboard));
             this.dashboardSidebar = new System.Windows.Forms.GroupBox();
+            this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.btnArchivedOrders = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
@@ -39,8 +40,10 @@
             this.btnOrders = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelTotalSales = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelTotalOrders = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,8 +51,10 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.coffeeshoplabel = new System.Windows.Forms.Label();
+            this.labelActiveCustomers = new System.Windows.Forms.Label();
+            this.labelTotalProductsSold = new System.Windows.Forms.Label();
+            this.labelTotalProducts = new System.Windows.Forms.Label();
+            this.labelActiveCustomer = new System.Windows.Forms.Label();
             this.dashboardSidebar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -75,6 +80,19 @@
             this.dashboardSidebar.Size = new System.Drawing.Size(254, 762);
             this.dashboardSidebar.TabIndex = 2;
             this.dashboardSidebar.TabStop = false;
+            // 
+            // coffeeshoplabel
+            // 
+            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
+            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
+            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
+            this.coffeeshoplabel.Name = "coffeeshoplabel";
+            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
+            this.coffeeshoplabel.TabIndex = 9;
+            this.coffeeshoplabel.Text = "Coffee Shop";
+            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnArchivedOrders
             // 
@@ -160,12 +178,23 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.groupBox1.Controls.Add(this.labelTotalSales);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(270, 88);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(321, 188);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
+            // 
+            // labelTotalSales
+            // 
+            this.labelTotalSales.AutoSize = true;
+            this.labelTotalSales.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalSales.Location = new System.Drawing.Point(60, 78);
+            this.labelTotalSales.Name = "labelTotalSales";
+            this.labelTotalSales.Size = new System.Drawing.Size(190, 42);
+            this.labelTotalSales.TabIndex = 1;
+            this.labelTotalSales.Text = "Php 10,000";
             // 
             // label1
             // 
@@ -179,12 +208,23 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.labelTotalOrders);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(603, 88);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(321, 188);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
+            // 
+            // labelTotalOrders
+            // 
+            this.labelTotalOrders.AutoSize = true;
+            this.labelTotalOrders.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalOrders.Location = new System.Drawing.Point(136, 78);
+            this.labelTotalOrders.Name = "labelTotalOrders";
+            this.labelTotalOrders.Size = new System.Drawing.Size(56, 42);
+            this.labelTotalOrders.TabIndex = 2;
+            this.labelTotalOrders.Text = "22";
             // 
             // label2
             // 
@@ -198,6 +238,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.labelTotalProductsSold);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Location = new System.Drawing.Point(936, 88);
             this.groupBox3.Name = "groupBox3";
@@ -227,6 +268,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.labelTotalProducts);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Location = new System.Drawing.Point(271, 298);
             this.groupBox4.Name = "groupBox4";
@@ -246,35 +288,53 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.labelActiveCustomer);
+            this.groupBox5.Controls.Add(this.labelActiveCustomers);
             this.groupBox5.Location = new System.Drawing.Point(769, 298);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(488, 234);
             this.groupBox5.TabIndex = 16;
             this.groupBox5.TabStop = false;
             // 
-            // label5
+            // labelActiveCustomers
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(158, 23);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Active Customers";
+            this.labelActiveCustomers.AutoSize = true;
+            this.labelActiveCustomers.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelActiveCustomers.Location = new System.Drawing.Point(6, 30);
+            this.labelActiveCustomers.Name = "labelActiveCustomers";
+            this.labelActiveCustomers.Size = new System.Drawing.Size(158, 23);
+            this.labelActiveCustomers.TabIndex = 2;
+            this.labelActiveCustomers.Text = "Active Customers";
             // 
-            // coffeeshoplabel
+            // labelTotalProductsSold
             // 
-            this.coffeeshoplabel.BackColor = System.Drawing.Color.Transparent;
-            this.coffeeshoplabel.Font = new System.Drawing.Font("Script MT Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coffeeshoplabel.Image = ((System.Drawing.Image)(resources.GetObject("coffeeshoplabel.Image")));
-            this.coffeeshoplabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.coffeeshoplabel.Location = new System.Drawing.Point(18, 10);
-            this.coffeeshoplabel.Name = "coffeeshoplabel";
-            this.coffeeshoplabel.Size = new System.Drawing.Size(218, 60);
-            this.coffeeshoplabel.TabIndex = 9;
-            this.coffeeshoplabel.Text = "Coffee Shop";
-            this.coffeeshoplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelTotalProductsSold.AutoSize = true;
+            this.labelTotalProductsSold.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalProductsSold.Location = new System.Drawing.Point(128, 78);
+            this.labelTotalProductsSold.Name = "labelTotalProductsSold";
+            this.labelTotalProductsSold.Size = new System.Drawing.Size(56, 42);
+            this.labelTotalProductsSold.TabIndex = 3;
+            this.labelTotalProductsSold.Text = "22";
+            // 
+            // labelTotalProducts
+            // 
+            this.labelTotalProducts.AutoSize = true;
+            this.labelTotalProducts.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalProducts.Location = new System.Drawing.Point(193, 105);
+            this.labelTotalProducts.Name = "labelTotalProducts";
+            this.labelTotalProducts.Size = new System.Drawing.Size(56, 42);
+            this.labelTotalProducts.TabIndex = 4;
+            this.labelTotalProducts.Text = "22";
+            // 
+            // labelActiveCustomer
+            // 
+            this.labelActiveCustomer.AutoSize = true;
+            this.labelActiveCustomer.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelActiveCustomer.Location = new System.Drawing.Point(204, 105);
+            this.labelActiveCustomer.Name = "labelActiveCustomer";
+            this.labelActiveCustomer.Size = new System.Drawing.Size(56, 42);
+            this.labelActiveCustomer.TabIndex = 5;
+            this.labelActiveCustomer.Text = "22";
             // 
             // FormDashboard
             // 
@@ -331,7 +391,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelActiveCustomers;
         private System.Windows.Forms.Label coffeeshoplabel;
+        private System.Windows.Forms.Label labelTotalSales;
+        private System.Windows.Forms.Label labelTotalOrders;
+        private System.Windows.Forms.Label labelTotalProductsSold;
+        private System.Windows.Forms.Label labelTotalProducts;
+        private System.Windows.Forms.Label labelActiveCustomer;
     }
 }

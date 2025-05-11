@@ -59,7 +59,6 @@
             this.labelEmail.Size = new System.Drawing.Size(51, 19);
             this.labelEmail.TabIndex = 1;
             this.labelEmail.Text = "Email:";
-            this.labelEmail.Click += new System.EventHandler(this.labelEmail_Click);
             // 
             // labelPassword
             // 
@@ -141,7 +140,6 @@
             this.label2.Size = new System.Drawing.Size(150, 16);
             this.label2.TabIndex = 10;
             this.label2.Text = "Don\'t Have an Account?";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // FormLogin
             // 

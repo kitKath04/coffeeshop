@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EDP_WinProject
@@ -15,6 +10,48 @@ namespace EDP_WinProject
         public FormDashboard()
         {
             InitializeComponent();
+            this.Load += new EventHandler(FormDashboard_Load);
+        }
+
+        private void FormDashboard_Load(object sender, EventArgs e)
+        {
+            LoadDashboardData();
+        }
+
+        private void LoadDashboardData()
+        {
+            string connStr = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+
+                    // Total Sales
+                    MySqlCommand cmdTotalSales = new MySqlCommand("SELECT IFNULL(SUM(subtotal_price), 0) FROM orders_items", conn);
+                    labelTotalSales.Text = "₱" + Convert.ToDecimal(cmdTotalSales.ExecuteScalar()).ToString("N2");
+
+                    // Total Orders
+                    MySqlCommand cmdTotalOrders = new MySqlCommand("SELECT COUNT(*) FROM orders", conn);
+                    labelTotalOrders.Text = cmdTotalOrders.ExecuteScalar().ToString();
+
+                    // Total Products Sold
+                    MySqlCommand cmdProductsSold = new MySqlCommand("SELECT IFNULL(SUM(quantity), 0) FROM orders_items", conn);
+                    labelTotalProductsSold.Text = cmdProductsSold.ExecuteScalar().ToString();
+
+                    // Total Products
+                    MySqlCommand cmdTotalProducts = new MySqlCommand("SELECT COUNT(*) FROM products", conn);
+                    labelTotalProducts.Text = cmdTotalProducts.ExecuteScalar().ToString();
+
+                    // Active Customers
+                    MySqlCommand cmdActiveCustomers = new MySqlCommand("SELECT COUNT(*) FROM customers WHERE status = 'Active'", conn);
+                    labelActiveCustomer.Text = cmdActiveCustomers.ExecuteScalar().ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading dashboard data: " + ex.Message);
+                }
+            }
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
