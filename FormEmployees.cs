@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace EDP_WinProject
 {
@@ -154,6 +155,63 @@ namespace EDP_WinProject
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
             AddEmployee();
+        }
+
+        private void ExportDataGridViewToExcelTemplate(DataGridView dgv, string templatePath, string newfilepath)
+        {
+            var excelApp = new Excel.Application();
+            if (excelApp == null)
+            {
+                MessageBox.Show("Excel is not installed!");
+                return;
+            }
+
+            excelApp.Visible = false;
+
+            Excel.Workbook workbook = excelApp.Workbooks.Open(templatePath);
+            Excel.Worksheet worksheet = workbook.Worksheets[1] as Excel.Worksheet;
+
+            int rowIndex = 4;
+
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    for (int col = 0; col < dgv.Columns.Count; col++)
+                    {
+                        worksheet.Cells[rowIndex, col + 1] = row.Cells[col].Value?.ToString();
+                    }
+
+                    for (int col = 1; col <= 5; col++) // Loop through the 7 columns
+                    {
+                        worksheet.Cells[rowIndex, col].HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                    }
+
+                    rowIndex++;
+                }
+            }
+
+            MessageBox.Show($"Data exported to {newfilepath}", "Export Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            excelApp.Visible = true;
+            workbook.SaveAs(newfilepath);
+            workbook.PrintPreview();
+        }
+
+        private void Exportbutton_Click(object sender, EventArgs e)
+        {
+            // Define the template path
+            string templatePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\ListofEmployees.xlsx";
+
+            // Get the current date-time for the export filename
+            DateTime now = DateTime.Now;
+            string mydate = now.ToString("yyyy-MM-dd-HH-mm-ss");
+
+            // Define the path for the exported file
+            string newFilePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\Reports\List of Employees Report-" + mydate + ".xlsx";
+
+            // Call the export method with the correct DataGridView (replace 'ordersTable' with your DataGridView name)
+            ExportDataGridViewToExcelTemplate(employeesTable, templatePath, newFilePath);
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)

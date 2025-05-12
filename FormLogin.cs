@@ -40,17 +40,26 @@ namespace EDP_WinProject
                 try
                 {
                     conn.Open();
-                    // Query to fetch the hashed password stored in the database
-                    string query = "SELECT password FROM customers WHERE email = @Email AND status = 'Active'";
 
+                    // Check if credentials match
+                    string query = "SELECT customers_id FROM customers WHERE email = @Email AND password = @Password AND status = 'Active'";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Password", hashedPassword);
 
-                    string storedHash = cmd.ExecuteScalar() as string;
+                    object result = cmd.ExecuteScalar();
 
-                    if (storedHash != null && storedHash == hashedPassword)
+                    if (result != null)
                     {
-                        // Correct password entered, show the dashboard
+                        int customerId = Convert.ToInt32(result);
+
+                        // Update last_login
+                        string updateQuery = "UPDATE customers SET last_login = NOW() WHERE customers_id = @Id";
+                        MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
+                        updateCmd.Parameters.AddWithValue("@Id", customerId);
+                        updateCmd.ExecuteNonQuery();
+
+                        // Open dashboard
                         FormDashboard dashboard = new FormDashboard();
                         dashboard.Show();
                         this.Hide();
@@ -66,6 +75,7 @@ namespace EDP_WinProject
                 }
             }
         }
+
 
 
         private string ComputeSha256Hash(string rawData)

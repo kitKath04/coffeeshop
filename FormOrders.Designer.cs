@@ -41,17 +41,17 @@
             this.ordersSidebar = new System.Windows.Forms.GroupBox();
             this.coffeeshoplabel = new System.Windows.Forms.Label();
             this.ordersTable = new System.Windows.Forms.DataGridView();
-            this.exportbutton = new System.Windows.Forms.Button();
-            this.statuscomboBox = new System.Windows.Forms.ComboBox();
-            this.statusLabel = new System.Windows.Forms.Label();
-            this.searchLabel = new System.Windows.Forms.Label();
-            this.searchtextBox = new System.Windows.Forms.TextBox();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderitemsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.exportbutton = new System.Windows.Forms.Button();
+            this.statuscomboBox = new System.Windows.Forms.ComboBox();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.searchLabel = new System.Windows.Forms.Label();
+            this.searchtextBox = new System.Windows.Forms.TextBox();
             this.ordersSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersTable)).BeginInit();
             this.SuspendLayout();
@@ -200,6 +200,42 @@
             this.ordersTable.Size = new System.Drawing.Size(945, 575);
             this.ordersTable.TabIndex = 17;
             // 
+            // idColumn
+            // 
+            this.idColumn.HeaderText = "ID";
+            this.idColumn.MinimumWidth = 6;
+            this.idColumn.Name = "idColumn";
+            // 
+            // customerColumn
+            // 
+            this.customerColumn.HeaderText = "Customer";
+            this.customerColumn.MinimumWidth = 6;
+            this.customerColumn.Name = "customerColumn";
+            // 
+            // orderitemsColumn
+            // 
+            this.orderitemsColumn.HeaderText = "Order Items";
+            this.orderitemsColumn.MinimumWidth = 6;
+            this.orderitemsColumn.Name = "orderitemsColumn";
+            // 
+            // dateColumn
+            // 
+            this.dateColumn.HeaderText = "Date";
+            this.dateColumn.MinimumWidth = 6;
+            this.dateColumn.Name = "dateColumn";
+            // 
+            // amountColumn
+            // 
+            this.amountColumn.HeaderText = "Amount";
+            this.amountColumn.MinimumWidth = 6;
+            this.amountColumn.Name = "amountColumn";
+            // 
+            // statusColumn
+            // 
+            this.statusColumn.HeaderText = "Status";
+            this.statusColumn.MinimumWidth = 6;
+            this.statusColumn.Name = "statusColumn";
+            // 
             // exportbutton
             // 
             this.exportbutton.BackColor = System.Drawing.Color.Black;
@@ -211,6 +247,7 @@
             this.exportbutton.Size = new System.Drawing.Size(39, 34);
             this.exportbutton.TabIndex = 21;
             this.exportbutton.UseVisualStyleBackColor = false;
+            this.exportbutton.Click += new System.EventHandler(this.exportbutton_Click);
             // 
             // statuscomboBox
             // 
@@ -248,42 +285,6 @@
             this.searchtextBox.Name = "searchtextBox";
             this.searchtextBox.Size = new System.Drawing.Size(202, 22);
             this.searchtextBox.TabIndex = 36;
-            // 
-            // idColumn
-            // 
-            this.idColumn.HeaderText = "ID";
-            this.idColumn.MinimumWidth = 6;
-            this.idColumn.Name = "idColumn";
-            // 
-            // customerColumn
-            // 
-            this.customerColumn.HeaderText = "Customer";
-            this.customerColumn.MinimumWidth = 6;
-            this.customerColumn.Name = "customerColumn";
-            // 
-            // orderitemsColumn
-            // 
-            this.orderitemsColumn.HeaderText = "Order Items";
-            this.orderitemsColumn.MinimumWidth = 6;
-            this.orderitemsColumn.Name = "orderitemsColumn";
-            // 
-            // dateColumn
-            // 
-            this.dateColumn.HeaderText = "Date";
-            this.dateColumn.MinimumWidth = 6;
-            this.dateColumn.Name = "dateColumn";
-            // 
-            // amountColumn
-            // 
-            this.amountColumn.HeaderText = "Amount";
-            this.amountColumn.MinimumWidth = 6;
-            this.amountColumn.Name = "amountColumn";
-            // 
-            // statusColumn
-            // 
-            this.statusColumn.HeaderText = "Status";
-            this.statusColumn.MinimumWidth = 6;
-            this.statusColumn.Name = "statusColumn";
             // 
             // FormOrders
             // 

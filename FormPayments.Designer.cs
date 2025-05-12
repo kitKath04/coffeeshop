@@ -47,7 +47,7 @@
             this.amountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentmethodColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.exportbutton = new System.Windows.Forms.Button();
             this.paymentmethodLabel = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
             this.statuscomboBox = new System.Windows.Forms.ComboBox();
@@ -247,17 +247,18 @@
             this.statusColumn.Name = "statusColumn";
             this.statusColumn.ReadOnly = true;
             // 
-            // button1
+            // exportbutton
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(1120, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(39, 34);
-            this.button1.TabIndex = 27;
-            this.button1.UseVisualStyleBackColor = false;
+            this.exportbutton.BackColor = System.Drawing.Color.Black;
+            this.exportbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.exportbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.exportbutton.Image = ((System.Drawing.Image)(resources.GetObject("exportbutton.Image")));
+            this.exportbutton.Location = new System.Drawing.Point(1120, 71);
+            this.exportbutton.Name = "exportbutton";
+            this.exportbutton.Size = new System.Drawing.Size(39, 34);
+            this.exportbutton.TabIndex = 27;
+            this.exportbutton.UseVisualStyleBackColor = false;
+            this.exportbutton.Click += new System.EventHandler(this.exportbutton_Click);
             // 
             // paymentmethodLabel
             // 
@@ -316,7 +317,7 @@
             this.Controls.Add(this.statuscomboBox);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.paymentmethodLabel);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.exportbutton);
             this.Controls.Add(this.paymentsTable);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.labelPayments);
@@ -352,7 +353,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn paymentmethodColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusColumn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button exportbutton;
         private System.Windows.Forms.Label paymentmethodLabel;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.ComboBox statuscomboBox;

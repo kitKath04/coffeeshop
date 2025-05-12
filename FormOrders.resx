@@ -121,7 +121,7 @@
   <data name="labelOrders.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAAA0lJREFUSEvtlksodGEYx8c1t0KUWQwLWRCxMrGQFTOThY0FkWIhZassJLcaLIgU
+        cQAAEnEB89x6jgAAA0lJREFUSEvtlksodGEYx8c1t0KUWQwLWRCxMrGQFTOThY0FkWIhZassJLcaLIgU
         e2JHsxWFkpJk51JKlnJZyL34f/0f73uc8zljzvimbL5fvc3pfS7/5rzveZ7HhV/iv3BEdnd30d/fj8HB
         Qayvr6vd6HEsfHZ2ho6ODqSlpcHlcslKSEhAd3c3Tk5OlJdzIgrf3t5iaGgIbrdbxJKSklBXV4eGhgbE
         x8fLXk5ODoLBIK6urlRUZMIKv7y8YHFxEWVlZcY/TE1NxfT0tPIAQqEQKisrDXtxcTGWl5clNhK2wtvb
@@ -141,7 +141,7 @@
   <data name="coffeeshoplabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADQAAAA2CAYAAACIsLrgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAAB9NJREFUaEPtmH1QFPcdxg8RkHcLtdQafKEQyyE3ifGMgPKecAcn5WDvUF4PkRoU
+        cQAAEnEB89x6jgAAB9NJREFUaEPtmH1QFPcdxg8RkHcLtdQafKEQyyE3ifGMgPKecAcn5WDvUF4PkRoU
         EXoEUMObRdIZJnipOi1Q5MTodC7lJeARWxlAROPG18i2xpqQJkFijG2n/7Q6bXn63eXOlo60vXCXiMMz
         88zu/e729vfZ5/e6ojnN6QmVVqsV8zZ9nN0ikGXe3t7VRUVFrbt27ZKbime3CIYhKDQ1NRmeiKQaGxul
         xcXFiI2NZQsLC6Wm4tmrrq4uhtJ5MoAIRgwS9R8eCKbi2Su+uXV2dk4BmZWjXmBg4DLTqSgiImIKUGlp
@@ -210,22 +210,4 @@
         RU5ErkJggg==
 </value>
   </data>
-  <metadata name="idColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="customerColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="orderitemsColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dateColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="amountColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="statusColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

@@ -59,7 +59,7 @@
             this.emailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phonenoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.positionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exportbutton = new System.Windows.Forms.Button();
+            this.Exportbutton = new System.Windows.Forms.Button();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchtextBox = new System.Windows.Forms.TextBox();
             this.employeesSidebar.SuspendLayout();
@@ -382,17 +382,18 @@
             this.positionColumn.MinimumWidth = 6;
             this.positionColumn.Name = "positionColumn";
             // 
-            // exportbutton
+            // Exportbutton
             // 
-            this.exportbutton.BackColor = System.Drawing.Color.Black;
-            this.exportbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.exportbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.exportbutton.Image = ((System.Drawing.Image)(resources.GetObject("exportbutton.Image")));
-            this.exportbutton.Location = new System.Drawing.Point(1053, 38);
-            this.exportbutton.Name = "exportbutton";
-            this.exportbutton.Size = new System.Drawing.Size(39, 34);
-            this.exportbutton.TabIndex = 21;
-            this.exportbutton.UseVisualStyleBackColor = false;
+            this.Exportbutton.BackColor = System.Drawing.Color.Black;
+            this.Exportbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Exportbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Exportbutton.Image = ((System.Drawing.Image)(resources.GetObject("Exportbutton.Image")));
+            this.Exportbutton.Location = new System.Drawing.Point(1053, 38);
+            this.Exportbutton.Name = "Exportbutton";
+            this.Exportbutton.Size = new System.Drawing.Size(39, 34);
+            this.Exportbutton.TabIndex = 21;
+            this.Exportbutton.UseVisualStyleBackColor = false;
+            this.Exportbutton.Click += new System.EventHandler(this.Exportbutton_Click);
             // 
             // searchLabel
             // 
@@ -422,7 +423,7 @@
             this.ClientSize = new System.Drawing.Size(1274, 761);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.searchtextBox);
-            this.Controls.Add(this.exportbutton);
+            this.Controls.Add(this.Exportbutton);
             this.Controls.Add(this.employeesTable);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
@@ -474,7 +475,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn emailColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phonenoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn positionColumn;
-        private System.Windows.Forms.Button exportbutton;
+        private System.Windows.Forms.Button Exportbutton;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.TextBox searchtextBox;
         private System.Windows.Forms.Label coffeeshoplabel;

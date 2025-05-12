@@ -247,6 +247,7 @@
             this.exportbutton.Size = new System.Drawing.Size(39, 34);
             this.exportbutton.TabIndex = 22;
             this.exportbutton.UseVisualStyleBackColor = false;
+            this.exportbutton.Click += new System.EventHandler(this.exportbutton_Click);
             // 
             // statuscomboBox
             // 

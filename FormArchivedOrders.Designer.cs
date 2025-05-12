@@ -51,6 +51,7 @@
             this.exportbutton = new System.Windows.Forms.Button();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchtextBox = new System.Windows.Forms.TextBox();
+            this.btnRestore = new System.Windows.Forms.Button();
             this.archivedordersSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.archivedordersTable)).BeginInit();
             this.SuspendLayout();
@@ -251,6 +252,7 @@
             this.exportbutton.Size = new System.Drawing.Size(39, 34);
             this.exportbutton.TabIndex = 22;
             this.exportbutton.UseVisualStyleBackColor = false;
+            this.exportbutton.Click += new System.EventHandler(this.exportbutton_Click);
             // 
             // searchLabel
             // 
@@ -271,12 +273,25 @@
             this.searchtextBox.Size = new System.Drawing.Size(202, 22);
             this.searchtextBox.TabIndex = 32;
             // 
+            // btnRestore
+            // 
+            this.btnRestore.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnRestore.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestore.Location = new System.Drawing.Point(1097, 71);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(89, 30);
+            this.btnRestore.TabIndex = 34;
+            this.btnRestore.Text = "Restore";
+            this.btnRestore.UseVisualStyleBackColor = false;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
+            // 
             // FormArchivedOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1274, 761);
+            this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.searchtextBox);
             this.Controls.Add(this.exportbutton);
@@ -319,5 +334,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn archiveddateColumn;
+        private System.Windows.Forms.Button btnRestore;
     }
 }

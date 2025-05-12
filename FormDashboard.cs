@@ -28,7 +28,7 @@ namespace EDP_WinProject
                     conn.Open();
 
                     // Total Sales
-                    MySqlCommand cmdTotalSales = new MySqlCommand("SELECT IFNULL(SUM(subtotal_price), 0) FROM orders_items", conn);
+                    MySqlCommand cmdTotalSales = new MySqlCommand("SELECT calculate_total_sales()", conn);
                     labelTotalSales.Text = "₱" + Convert.ToDecimal(cmdTotalSales.ExecuteScalar()).ToString("N2");
 
                     // Total Orders
