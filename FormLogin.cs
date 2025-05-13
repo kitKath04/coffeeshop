@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -10,7 +8,6 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 
-
 namespace EDP_WinProject
 {
     public partial class FormLogin : Form
@@ -18,6 +15,16 @@ namespace EDP_WinProject
         public FormLogin()
         {
             InitializeComponent();
+        }
+
+        // This is the method to hash the password using SHA-256
+        private string ComputeSha256Hash(string rawData)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+                return BitConverter.ToString(bytes).Replace("-", "").ToLower(); // Returns the hashed password as a string
+            }
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
@@ -31,7 +38,7 @@ namespace EDP_WinProject
                 return;
             }
 
-            // Hash the entered password
+            // Hash the entered password before checking it
             string hashedPassword = ComputeSha256Hash(password);
 
             string connStr = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
@@ -76,18 +83,6 @@ namespace EDP_WinProject
             }
         }
 
-
-
-        private string ComputeSha256Hash(string rawData)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-                return Convert.ToBase64String(bytes); // This matches what's stored in DB
-            }
-        }
-
-
         private void labelSignUp_Click(object sender, EventArgs e)
         {
             FormSignUp myform = new FormSignUp();
@@ -104,6 +99,5 @@ namespace EDP_WinProject
             FormForgotPassword forgotPasswordForm = new FormForgotPassword();
             forgotPasswordForm.ShowDialog();
         }
-
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Text;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -18,7 +19,6 @@ namespace EDP_WinProject
 
         private void FormCustomers_Load(object sender, EventArgs e)
         {
-            // Add "All", "Active", "Inactive" to the comboBox
             statuscomboBox.Items.Clear();
             statuscomboBox.Items.Add("All");
             statuscomboBox.Items.Add("Active");
@@ -26,7 +26,6 @@ namespace EDP_WinProject
             statuscomboBox.SelectedIndex = 0;
 
             LoadData();
-            customersTable.CellValueChanged += customersTable_CellValueChanged;
         }
 
         private void LoadData(string nameFilter = "", string statusFilter = "")
@@ -77,15 +76,7 @@ namespace EDP_WinProject
                     var loginCol = new DataGridViewTextBoxColumn { Name = "LastLogin", HeaderText = "Last Login", DataPropertyName = "Last Login", ReadOnly = true };
                     customersTable.Columns.Add(loginCol);
 
-                    var statusCol = new DataGridViewComboBoxColumn
-                    {
-                        Name = "Status",
-                        HeaderText = "Status",
-                        DataPropertyName = "Status",
-                        DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton,
-                        FlatStyle = FlatStyle.Flat
-                    };
-                    statusCol.Items.AddRange("Active", "Inactive");
+                    var statusCol = new DataGridViewTextBoxColumn { Name = "Status", HeaderText = "Status", DataPropertyName = "Status", ReadOnly = true };
                     customersTable.Columns.Add(statusCol);
 
                     customersTable.DataSource = dt;
@@ -127,30 +118,80 @@ namespace EDP_WinProject
             LoadData(nameFilter, statusFilter);
         }
 
-        private void customersTable_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            if (customersTable.Columns[e.ColumnIndex].Name == "Status")
-            {
-                string newStatus = customersTable.Rows[e.RowIndex].Cells["Status"].Value?.ToString();
-                int customerId = Convert.ToInt32(customersTable.Rows[e.RowIndex].Cells["ID"].Value);
+            string fname = FirstNametextBox.Text.Trim();
+            string lname = LastNametextBox.Text.Trim();
+            string phone = PhoneNotextBox.Text.Trim();
+            string email = EmailtextBox.Text.Trim();
+            string password = PasswordtextBox.Text;
+            string confirmPass = ConfirmPasstextBox.Text;
 
-                string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+            // Check if all fields are filled
+            if (string.IsNullOrEmpty(fname) || string.IsNullOrEmpty(lname) ||
+                string.IsNullOrEmpty(phone) || string.IsNullOrEmpty(email) ||
+                string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPass))
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
+            // Check if passwords match
+            if (password != confirmPass)
+            {
+                MessageBox.Show("Passwords do not match.");
+                return;
+            }
+
+            // Hash the password using SHA256
+            string hashedPassword = HashPassword(password);
+
+            string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
                 {
-                    try
-                    {
-                        conn.Open();
-                        string updateQuery = "UPDATE customers SET status = @status WHERE customers_id = @id";
-                        MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
-                        cmd.Parameters.AddWithValue("@status", newStatus);
-                        cmd.Parameters.AddWithValue("@id", customerId);
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Failed to update status: " + ex.Message);
-                    }
+                    conn.Open();
+
+                    // Prepare the insert query
+                    string insertQuery = @"
+                    INSERT INTO customers (fname, lname, phonenum, email, password, status) 
+                    VALUES (@fname, @lname, @phone, @email, @password, 'Active')";
+
+                    MySqlCommand cmd = new MySqlCommand(insertQuery, conn);
+                    cmd.Parameters.AddWithValue("@fname", fname);
+                    cmd.Parameters.AddWithValue("@lname", lname);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
+
+                    // Execute the query
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Customer added successfully.");
+
+                    // Clear fields
+                    FirstNametextBox.Clear();
+                    LastNametextBox.Clear();
+                    PhoneNotextBox.Clear();
+                    EmailtextBox.Clear();
+                    PasswordtextBox.Clear();
+                    ConfirmPasstextBox.Clear();
+
+                    LoadData(); // Refresh the table
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to add customer: " + ex.Message);
+                }
+            }
+        }
+
+        private string HashPassword(string password)
+        {
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
             }
         }
 
@@ -192,6 +233,32 @@ namespace EDP_WinProject
                 MessageBox.Show("Please select a customer to delete.");
             }
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (customersTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = customersTable.SelectedRows[0];
+
+                int id = Convert.ToInt32(selectedRow.Cells["customers_id"].Value);
+                string fname = selectedRow.Cells["fname"].Value.ToString();
+                string lname = selectedRow.Cells["lname"].Value.ToString();
+                string email = selectedRow.Cells["email"].Value.ToString();
+                string phone = selectedRow.Cells["phonenum"].Value.ToString();
+                string lastLogin = selectedRow.Cells["last_login"].Value.ToString();
+                string status = selectedRow.Cells["status"].Value.ToString();
+
+                FormEditCustomers editForm = new FormEditCustomers(id, fname, lname, email, phone, lastLogin, status);
+                editForm.ShowDialog();
+
+                LoadData(); // Optional: refresh the table after editing
+            }
+            else
+            {
+                MessageBox.Show("Please select a customer to edit.");
+            }
+        }
+
 
         private void ExportDataGridViewToExcelTemplate(DataGridView dgv, string templatePath, string newfilepath)
         {

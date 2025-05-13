@@ -275,8 +275,9 @@
             // 
             // btnRestore
             // 
-            this.btnRestore.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnRestore.BackColor = System.Drawing.Color.SteelBlue;
             this.btnRestore.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRestore.Location = new System.Drawing.Point(1097, 71);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(89, 30);
