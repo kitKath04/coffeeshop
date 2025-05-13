@@ -240,25 +240,28 @@ namespace EDP_WinProject
             {
                 DataGridViewRow selectedRow = customersTable.SelectedRows[0];
 
-                int id = Convert.ToInt32(selectedRow.Cells["customers_id"].Value);
-                string fname = selectedRow.Cells["fname"].Value.ToString();
-                string lname = selectedRow.Cells["lname"].Value.ToString();
-                string email = selectedRow.Cells["email"].Value.ToString();
-                string phone = selectedRow.Cells["phonenum"].Value.ToString();
-                string lastLogin = selectedRow.Cells["last_login"].Value.ToString();
-                string status = selectedRow.Cells["status"].Value.ToString();
+                int id = Convert.ToInt32(selectedRow.Cells["ID"].Value); // "ID" instead of "customers_id"
+                string fullName = selectedRow.Cells["Name"].Value.ToString();
+                string email = selectedRow.Cells["Email"].Value.ToString();
+                string phone = selectedRow.Cells["Phone"].Value.ToString();
+                string lastLogin = selectedRow.Cells["LastLogin"].Value.ToString();
+                string status = selectedRow.Cells["Status"].Value.ToString();
+
+                // If you need fname and lname separately, you can split the fullName
+                string[] nameParts = fullName.Split(' ');
+                string fname = nameParts.Length > 0 ? nameParts[0] : "";
+                string lname = nameParts.Length > 1 ? string.Join(" ", nameParts, 1, nameParts.Length - 1) : "";
 
                 FormEditCustomers editForm = new FormEditCustomers(id, fname, lname, email, phone, lastLogin, status);
                 editForm.ShowDialog();
 
-                LoadData(); // Optional: refresh the table after editing
+                LoadData(); // Refresh the table after editing
             }
             else
             {
                 MessageBox.Show("Please select a customer to edit.");
             }
         }
-
 
         private void ExportDataGridViewToExcelTemplate(DataGridView dgv, string templatePath, string newfilepath)
         {

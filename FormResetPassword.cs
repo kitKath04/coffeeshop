@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;  // Required for MySQL connection
+using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -21,34 +21,27 @@ namespace EDP_WinProject
             string newPassword = textBoxNewPass.Text.Trim();
             string confirmPassword = textBoxConfirmPassword.Text.Trim();
 
-            // Check if either field is empty
             if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
             {
                 MessageBox.Show("Please fill in both password fields.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Check if passwords match
             if (newPassword != confirmPassword)
             {
                 MessageBox.Show("Passwords do not match. Please try again.", "Mismatch", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Hash the new password
-            string hashedPassword = HashPassword(newPassword);
+            // ✅ Use same SHA-256 format as FormLogin
+            string hashedPassword = ComputeSha256Hash(newPassword);
 
-            // Update the password in the database
             if (UpdatePasswordInDatabase(userEmail, hashedPassword))
             {
                 MessageBox.Show("Password has been reset successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Hide the reset password form
                 this.Hide();
-
-                // Show the login form after resetting the password
                 FormLogin loginForm = new FormLogin();
-                loginForm.Show(); // Show the login form
+                loginForm.Show();
             }
             else
             {
@@ -56,17 +49,16 @@ namespace EDP_WinProject
             }
         }
 
-        // Method to hash the password using SHA-256
-        private string HashPassword(string password)
+        // ✅ Same hashing format as FormLogin
+        private string ComputeSha256Hash(string rawData)
         {
-            using (SHA256 sha256 = SHA256.Create())
+            using (SHA256 sha256Hash = SHA256.Create())
             {
-                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return Convert.ToBase64String(hashBytes);
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+                return BitConverter.ToString(bytes).Replace("-", "").ToLower(); // Hex format
             }
         }
 
-        // Method to update the password in the database
         private bool UpdatePasswordInDatabase(string email, string hashedPassword)
         {
             string connStr = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
@@ -75,17 +67,14 @@ namespace EDP_WinProject
                 try
                 {
                     conn.Open();
-
-                    // SQL query to update the password
                     string query = "UPDATE customers SET password = @Password WHERE email = @Email";
-
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Password", hashedPassword);
                         cmd.Parameters.AddWithValue("@Email", email);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        return rowsAffected > 0;  // Return true if update was successful
+                        return rowsAffected > 0;
                     }
                 }
                 catch (Exception ex)
