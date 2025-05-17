@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCustomers));
             this.btnArchivedOrders = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -69,6 +70,7 @@
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelFirstName = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.customersSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customersTable)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -565,5 +567,6 @@
         private System.Windows.Forms.TextBox PhoneNotextBox;
         private System.Windows.Forms.Label labelConfirmPass;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

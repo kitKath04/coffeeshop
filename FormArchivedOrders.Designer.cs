@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormArchivedOrders));
             this.archivedordersSidebar = new System.Windows.Forms.GroupBox();
             this.coffeeshoplabel = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchtextBox = new System.Windows.Forms.TextBox();
             this.btnRestore = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.archivedordersSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.archivedordersTable)).BeginInit();
             this.SuspendLayout();
@@ -336,5 +338,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn statusColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn archiveddateColumn;
         private System.Windows.Forms.Button btnRestore;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

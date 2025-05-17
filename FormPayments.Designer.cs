@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPayments));
             this.paymentsSidebar = new System.Windows.Forms.GroupBox();
             this.coffeeshoplabel = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@
             this.statusLabel = new System.Windows.Forms.Label();
             this.statuscomboBox = new System.Windows.Forms.ComboBox();
             this.paymentmethodcomboBox = new System.Windows.Forms.ComboBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.paymentsSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.paymentsTable)).BeginInit();
             this.SuspendLayout();
@@ -359,5 +361,6 @@
         private System.Windows.Forms.ComboBox statuscomboBox;
         private System.Windows.Forms.Label coffeeshoplabel;
         private System.Windows.Forms.ComboBox paymentmethodcomboBox;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

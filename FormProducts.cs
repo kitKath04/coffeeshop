@@ -13,6 +13,7 @@ namespace EDP_WinProject
         {
             InitializeComponent();
             this.Load += new EventHandler(FormProducts_Load);
+            toolTip1.SetToolTip(exportbutton, "Export products list");
         }
 
         private void FormProducts_Load(object sender, EventArgs e)

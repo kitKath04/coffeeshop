@@ -22,6 +22,7 @@ namespace EDP_WinProject
             ordersTable.CurrentCellDirtyStateChanged += OrdersTable_CurrentCellDirtyStateChanged;
             searchtextBox.TextChanged += new EventHandler(SearchTextBox_TextChanged);
             statuscomboBox.SelectedIndexChanged += new EventHandler(StatusComboBox_SelectedIndexChanged);
+            toolTip1.SetToolTip(exportbutton, "Export orders list");
         }
 
         private void FormOrders_Load(object sender, EventArgs e)

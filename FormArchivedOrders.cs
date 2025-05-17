@@ -19,6 +19,7 @@ namespace EDP_WinProject
             InitializeComponent();
             this.Load += new EventHandler(FormArchivedOrders_Load);
             searchtextBox.TextChanged += new EventHandler(searchtextBox_TextChanged);
+            toolTip1.SetToolTip(exportbutton, "Export archived orders list");
         }
 
         private void FormArchivedOrders_Load(object sender, EventArgs e)

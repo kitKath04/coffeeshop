@@ -14,6 +14,7 @@ namespace EDP_WinProject
             this.Load += new EventHandler(FormPayments_Load);
             paymentmethodcomboBox.SelectedIndexChanged += new EventHandler(paymentmethodcomboBox_SelectedIndexChanged);
             statuscomboBox.SelectedIndexChanged += new EventHandler(statuscomboBox_SelectedIndexChanged);
+            toolTip1.SetToolTip(exportbutton, "Export payments list");
         }
 
         private void FormPayments_Load(object sender, EventArgs e)

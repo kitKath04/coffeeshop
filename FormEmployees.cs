@@ -18,6 +18,7 @@ namespace EDP_WinProject
         {
             InitializeComponent();
             this.Load += new EventHandler(FormEmployees_Load);
+            toolTip1.SetToolTip(Exportbutton, "Export employees list");
         }
 
         private void FormEmployees_Load(object sender, EventArgs e)

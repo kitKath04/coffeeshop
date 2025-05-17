@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProducts));
             this.productsSidebar = new System.Windows.Forms.GroupBox();
             this.coffeeshoplabel = new System.Windows.Forms.Label();
@@ -62,6 +63,7 @@
             this.exportbutton = new System.Windows.Forms.Button();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchtextBox = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.productsSidebar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsTable)).BeginInit();
@@ -487,6 +489,7 @@
         private System.Windows.Forms.TextBox searchtextBox;
         private System.Windows.Forms.Label coffeeshoplabel;
         private System.Windows.Forms.ComboBox categorycomboBox;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
