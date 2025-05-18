@@ -362,6 +362,7 @@
             this.ConfirmPasstextBox.Location = new System.Drawing.Point(601, 141);
             this.ConfirmPasstextBox.Multiline = true;
             this.ConfirmPasstextBox.Name = "ConfirmPasstextBox";
+            this.ConfirmPasstextBox.PasswordChar = '*';
             this.ConfirmPasstextBox.Size = new System.Drawing.Size(333, 30);
             this.ConfirmPasstextBox.TabIndex = 17;
             // 
@@ -381,6 +382,7 @@
             this.PasswordtextBox.Location = new System.Drawing.Point(111, 141);
             this.PasswordtextBox.Multiline = true;
             this.PasswordtextBox.Name = "PasswordtextBox";
+            this.PasswordtextBox.PasswordChar = '*';
             this.PasswordtextBox.Size = new System.Drawing.Size(311, 30);
             this.PasswordtextBox.TabIndex = 15;
             // 

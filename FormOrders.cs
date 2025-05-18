@@ -322,12 +322,5 @@ namespace EDP_WinProject
             myform.Show();
             this.Hide();
         }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            FormEditOrders myform = new FormEditOrders();
-            myform.Show();
-            this.Hide();
-        }
     }
 }

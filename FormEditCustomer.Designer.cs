@@ -196,9 +196,9 @@
             this.labelLastName.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLastName.Location = new System.Drawing.Point(40, 127);
             this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(55, 19);
+            this.labelLastName.Size = new System.Drawing.Size(88, 19);
             this.labelLastName.TabIndex = 39;
-            this.labelLastName.Text = "Name:";
+            this.labelLastName.Text = "Last Name:";
             // 
             // comboBoxStatus
             // 

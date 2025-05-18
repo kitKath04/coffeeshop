@@ -133,12 +133,6 @@
     <Compile Include="FormEditEmployees.Designer.cs">
       <DependentUpon>FormEditEmployees.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEditOrders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormEditOrders.Designer.cs">
-      <DependentUpon>FormEditOrders.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormEditPayments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,9 +215,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditEmployees.resx">
       <DependentUpon>FormEditEmployees.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormEditOrders.resx">
-      <DependentUpon>FormEditOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditPayments.resx">
       <DependentUpon>FormEditPayments.cs</DependentUpon>
