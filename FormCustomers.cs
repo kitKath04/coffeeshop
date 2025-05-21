@@ -300,15 +300,16 @@ namespace EDP_WinProject
 
         private void exportbutton_Click(object sender, EventArgs e)
         {
-            string templatePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\ListofCustomers.xlsx";
+            string templatePath = Application.StartupPath + @"\reportTemplate\ListofCustomers.xlsx";
 
             DateTime now = DateTime.Now;
             string mydate = now.ToString("yyyy-MM-dd-HH-mm-ss");
 
-            string newFilePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\Reports\List of Customers Report-" + mydate + ".xlsx";
+            string newFilePath = Application.StartupPath + @"\generatedReports\List of Customers Report-" + mydate + ".xlsx";
 
             ExportDataGridViewToExcelTemplate(customersTable, templatePath, newFilePath);
         }
+
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {

@@ -157,12 +157,12 @@ namespace EDP_WinProject
 
         private void exportbutton_Click(object sender, EventArgs e)
         {
-            string templatePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\ListofProducts.xlsx";
+            string templatePath = Application.StartupPath + @"\reportTemplate\ListofProducts.xlsx";
 
             DateTime now = DateTime.Now;
             string mydate = now.ToString("yyyy-MM-dd-HH-mm-ss");
 
-            string newFilePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\Reports\List of Products Report-" + mydate + ".xlsx";
+            string newFilePath = Application.StartupPath + @"\generatedReports\List of Products Report-" + mydate + ".xlsx";
 
             ExportDataGridViewToExcelTemplate(productsTable, templatePath, newFilePath);
         }
