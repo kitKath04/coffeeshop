@@ -33,7 +33,6 @@ namespace EDP_WinProject
                 return;
             }
 
-            // ✅ Use same SHA-256 format as FormLogin
             string hashedPassword = ComputeSha256Hash(newPassword);
 
             if (UpdatePasswordInDatabase(userEmail, hashedPassword))
@@ -49,13 +48,12 @@ namespace EDP_WinProject
             }
         }
 
-        // ✅ Same hashing format as FormLogin
         private string ComputeSha256Hash(string rawData)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-                return BitConverter.ToString(bytes).Replace("-", "").ToLower(); // Hex format
+                return BitConverter.ToString(bytes).Replace("-", "").ToLower();
             }
         }
 

@@ -83,7 +83,6 @@ namespace EDP_WinProject
 
                     customersTable.DataSource = dt;
 
-                    // Enable editing for Status only
                     customersTable.ReadOnly = false;
                     foreach (DataGridViewColumn col in customersTable.Columns)
                     {
@@ -129,7 +128,6 @@ namespace EDP_WinProject
             string password = PasswordtextBox.Text;
             string confirmPass = ConfirmPasstextBox.Text;
 
-            // Check if all fields are filled
             if (string.IsNullOrEmpty(fname) || string.IsNullOrEmpty(lname) ||
                 string.IsNullOrEmpty(phone) || string.IsNullOrEmpty(email) ||
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPass))
@@ -138,14 +136,12 @@ namespace EDP_WinProject
                 return;
             }
 
-            // Check if passwords match
             if (password != confirmPass)
             {
                 MessageBox.Show("Passwords do not match.");
                 return;
             }
 
-            // Hash the password using SHA256
             string hashedPassword = HashPassword(password);
 
             string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
@@ -155,7 +151,6 @@ namespace EDP_WinProject
                 {
                     conn.Open();
 
-                    // Prepare the insert query
                     string insertQuery = @"
                     INSERT INTO customers (fname, lname, phonenum, email, password, status) 
                     VALUES (@fname, @lname, @phone, @email, @password, 'Active')";
@@ -167,11 +162,9 @@ namespace EDP_WinProject
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@password", hashedPassword);
 
-                    // Execute the query
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Customer added successfully.");
 
-                    // Clear fields
                     FirstNametextBox.Clear();
                     LastNametextBox.Clear();
                     PhoneNotextBox.Clear();
@@ -179,7 +172,7 @@ namespace EDP_WinProject
                     PasswordtextBox.Clear();
                     ConfirmPasstextBox.Clear();
 
-                    LoadData(); // Refresh the table
+                    LoadData();
                 }
                 catch (Exception ex)
                 {
@@ -221,7 +214,7 @@ namespace EDP_WinProject
                             cmd.ExecuteNonQuery();
 
                             MessageBox.Show("Customer deleted successfully.");
-                            LoadData(); // Refresh table
+                            LoadData();
                         }
                         catch (Exception ex)
                         {
@@ -242,14 +235,13 @@ namespace EDP_WinProject
             {
                 DataGridViewRow selectedRow = customersTable.SelectedRows[0];
 
-                int id = Convert.ToInt32(selectedRow.Cells["ID"].Value); // "ID" instead of "customers_id"
+                int id = Convert.ToInt32(selectedRow.Cells["ID"].Value);
                 string fullName = selectedRow.Cells["Name"].Value.ToString();
                 string email = selectedRow.Cells["Email"].Value.ToString();
                 string phone = selectedRow.Cells["Phone"].Value.ToString();
                 string lastLogin = selectedRow.Cells["LastLogin"].Value.ToString();
                 string status = selectedRow.Cells["Status"].Value.ToString();
 
-                // If you need fname and lname separately, you can split the fullName
                 string[] nameParts = fullName.Split(' ');
                 string fname = nameParts.Length > 0 ? nameParts[0] : "";
                 string lname = nameParts.Length > 1 ? string.Join(" ", nameParts, 1, nameParts.Length - 1) : "";
@@ -257,7 +249,7 @@ namespace EDP_WinProject
                 FormEditCustomers editForm = new FormEditCustomers(id, fname, lname, email, phone, lastLogin, status);
                 editForm.ShowDialog();
 
-                LoadData(); // Refresh the table after editing
+                LoadData();
             }
             else
             {

@@ -21,7 +21,7 @@ namespace EDP_WinProject
         {
             LoadPaymentMethodsFilter();
             LoadStatusFilter();
-            LoadPayments(); // Initial load
+            LoadPayments();
         }
 
         private void LoadPayments()
@@ -123,13 +123,11 @@ namespace EDP_WinProject
             }
         }
 
-        // Event handler for paymentmethodcomboBox selection change
         private void paymentmethodcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadPayments();
         }
 
-        // Event handler for statuscomboBox selection change
         private void statuscomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadPayments();
@@ -178,17 +176,13 @@ namespace EDP_WinProject
 
         private void exportbutton_Click(object sender, EventArgs e)
         {
-            // Define the template path
             string templatePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\ListofPayments.xlsx";
 
-            // Get the current date-time for the export filename
             DateTime now = DateTime.Now;
             string mydate = now.ToString("yyyy-MM-dd-HH-mm-ss");
 
-            // Define the path for the exported file
             string newFilePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\Reports\List of Payments Report-" + mydate + ".xlsx";
 
-            // Call the export method with the correct DataGridView (replace 'ordersTable' with your DataGridView name)
             ExportDataGridViewToExcelTemplate(paymentsTable, templatePath, newFilePath);
         }
 

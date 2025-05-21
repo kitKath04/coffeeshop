@@ -34,7 +34,6 @@ namespace EDP_WinProject
             {
                 MessageBox.Show("Code is valid! Proceeding to reset password.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Open the reset password form
                 FormResetPassword resetForm = new FormResetPassword(userEmail);
                 resetForm.Show();
                 this.Hide();

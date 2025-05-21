@@ -13,8 +13,8 @@ namespace EDP_WinProject
         {
             InitializeComponent();
             productId = id;
-            LoadCategories();      // Load categories into the combobox first
-            LoadProductDetails();  // Then load the product to be edited
+            LoadCategories();
+            LoadProductDetails();
         }
 
         private void LoadCategories()
@@ -84,7 +84,6 @@ namespace EDP_WinProject
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Validation for empty fields
             if (string.IsNullOrWhiteSpace(textBoxProductName.Text) ||
                 string.IsNullOrWhiteSpace(textBoxPrice.Text) ||
                 string.IsNullOrWhiteSpace(textBoxStock.Text) ||

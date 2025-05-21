@@ -27,12 +27,11 @@ namespace EDP_WinProject
 
         private void FormOrders_Load(object sender, EventArgs e)
         {
-            // Populate the statusComboBox with status options
             statuscomboBox.Items.Add("All");
             statuscomboBox.Items.Add("Pending");
             statuscomboBox.Items.Add("Completed");
             statuscomboBox.Items.Add("Canceled");
-            statuscomboBox.SelectedItem = "All"; // Default to "All"
+            statuscomboBox.SelectedItem = "All";
 
             LoadOrders();
         }
@@ -93,7 +92,6 @@ namespace EDP_WinProject
                     ordersTable.AutoGenerateColumns = false;
                     ordersTable.Columns.Clear();
 
-                    // Add ID, Customer, Order Items, Date, Amount columns
                     ordersTable.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "ID",
@@ -134,7 +132,6 @@ namespace EDP_WinProject
                         ReadOnly = true
                     });
 
-                    // Add ComboBox column for Status
                     var statusCol = new DataGridViewComboBoxColumn
                     {
                         Name = "Status",
@@ -148,11 +145,10 @@ namespace EDP_WinProject
 
                     ordersTable.DataSource = dt;
 
-                    // Set all columns ReadOnly
                     ordersTable.ReadOnly = false;
                     foreach (DataGridViewColumn column in ordersTable.Columns)
                     {
-                        if (column.Name != "Status") // Only allow editing on Status column
+                        if (column.Name != "Status")
                             column.ReadOnly = true;
                     }
 
@@ -235,7 +231,7 @@ namespace EDP_WinProject
                         worksheet.Cells[rowIndex, col + 1] = row.Cells[col].Value?.ToString();
                     }
 
-                    for (int col = 1; col <= 6; col++) // Loop through the 7 columns
+                    for (int col = 1; col <= 6; col++)
                     {
                         worksheet.Cells[rowIndex, col].HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
                     }
@@ -253,17 +249,13 @@ namespace EDP_WinProject
 
         private void exportbutton_Click(object sender, EventArgs e)
         {
-            // Define the template path
             string templatePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\ListofOrders.xlsx";
 
-            // Get the current date-time for the export filename
             DateTime now = DateTime.Now;
             string mydate = now.ToString("yyyy-MM-dd-HH-mm-ss");
 
-            // Define the path for the exported file
             string newFilePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\Reports\List of Orders Report-" + mydate + ".xlsx";
 
-            // Call the export method with the correct DataGridView (replace 'ordersTable' with your DataGridView name)
             ExportDataGridViewToExcelTemplate(ordersTable, templatePath, newFilePath);
         }
 

@@ -23,7 +23,7 @@ namespace EDP_WinProject
 
         private void FormEmployees_Load(object sender, EventArgs e)
         {
-            LoadData(); // Call data loader
+            LoadData();
         }
 
         private void LoadData(string search = "")
@@ -130,8 +130,8 @@ namespace EDP_WinProject
                     if (rowsAffected > 0)
                     {
                         MessageBox.Show("Employee added successfully.");
-                        LoadData(); // Refresh table
-                        ClearInputs(); // Optionally clear textboxes
+                        LoadData();
+                        ClearInputs();
                     }
                     else
                     {
@@ -183,7 +183,7 @@ namespace EDP_WinProject
                         worksheet.Cells[rowIndex, col + 1] = row.Cells[col].Value?.ToString();
                     }
 
-                    for (int col = 1; col <= 5; col++) // Loop through the 7 columns
+                    for (int col = 1; col <= 5; col++)
                     {
                         worksheet.Cells[rowIndex, col].HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
                     }
@@ -201,17 +201,13 @@ namespace EDP_WinProject
 
         private void Exportbutton_Click(object sender, EventArgs e)
         {
-            // Define the template path
             string templatePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\ListofEmployees.xlsx";
 
-            // Get the current date-time for the export filename
             DateTime now = DateTime.Now;
             string mydate = now.ToString("yyyy-MM-dd-HH-mm-ss");
 
-            // Define the path for the exported file
             string newFilePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\Reports\List of Employees Report-" + mydate + ".xlsx";
 
-            // Call the export method with the correct DataGridView (replace 'ordersTable' with your DataGridView name)
             ExportDataGridViewToExcelTemplate(employeesTable, templatePath, newFilePath);
         }
 
@@ -283,7 +279,7 @@ namespace EDP_WinProject
 
                 FormEditEmployees editForm = new FormEditEmployees(id, name, email, phone, position);
                 editForm.ShowDialog();
-                LoadData(); // Refresh after editing
+                LoadData();
             }
             else
             {
@@ -322,7 +318,7 @@ namespace EDP_WinProject
                                 if (rowsAffected > 0)
                                 {
                                     MessageBox.Show("Employee deleted successfully.");
-                                    LoadData(); // Refresh the table
+                                    LoadData();
                                 }
                                 else
                                 {

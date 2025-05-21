@@ -89,7 +89,7 @@ namespace EDP_WinProject
         {
             FormPayments form = new FormPayments();
             form.Show();
-            this.Close(); // or this.Hide() if you want to keep it alive
+            this.Close();
         }
 
         private void btnSave_Click(object sender, EventArgs e)

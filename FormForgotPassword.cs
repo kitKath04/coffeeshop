@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient; // Required for MySQL connection
+using MySql.Data.MySqlClient; 
 
 namespace EDP_WinProject
 {
@@ -50,13 +50,11 @@ namespace EDP_WinProject
                         {
                             string resetCode = GenerateResetCode();
 
-                            // Simulate sending code
                             MessageBox.Show($"Your reset code is: {resetCode}", "Simulated Reset Code", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // Open reset code validation form
                             FormResetCodeValidation codeForm = new FormResetCodeValidation(email, resetCode);
                             codeForm.Show();
-                            this.Hide(); // Optional: hide current form
+                            this.Hide();
                         }
                         else
                         {
@@ -87,7 +85,7 @@ namespace EDP_WinProject
         private string GenerateResetCode()
         {
             Random rnd = new Random();
-            return rnd.Next(100000, 999999).ToString(); // 6-digit code
+            return rnd.Next(100000, 999999).ToString();
         }
     }
 }

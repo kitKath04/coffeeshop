@@ -17,13 +17,12 @@ namespace EDP_WinProject
             InitializeComponent();
         }
 
-        // This is the method to hash the password using SHA-256
         private string ComputeSha256Hash(string rawData)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-                return BitConverter.ToString(bytes).Replace("-", "").ToLower(); // Returns the hashed password as a string
+                return BitConverter.ToString(bytes).Replace("-", "").ToLower(); 
             }
         }
 
@@ -38,7 +37,6 @@ namespace EDP_WinProject
                 return;
             }
 
-            // Hash the entered password before checking it
             string hashedPassword = ComputeSha256Hash(password);
 
             string connStr = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
@@ -48,7 +46,6 @@ namespace EDP_WinProject
                 {
                     conn.Open();
 
-                    // Check if credentials match
                     string query = "SELECT customers_id FROM customers WHERE email = @Email AND password = @Password AND status = 'Active'";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Email", email);
@@ -60,13 +57,11 @@ namespace EDP_WinProject
                     {
                         int customerId = Convert.ToInt32(result);
 
-                        // Update last_login
                         string updateQuery = "UPDATE customers SET last_login = NOW() WHERE customers_id = @Id";
                         MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
                         updateCmd.Parameters.AddWithValue("@Id", customerId);
                         updateCmd.ExecuteNonQuery();
 
-                        // Open dashboard
                         FormDashboard dashboard = new FormDashboard();
                         dashboard.Show();
                         this.Hide();
@@ -92,10 +87,8 @@ namespace EDP_WinProject
 
         private void labelForgotPassword_Click(object sender, EventArgs e)
         {
-            // Hide the login form
             this.Hide();
 
-            // Show the forgot password form
             FormForgotPassword forgotPasswordForm = new FormForgotPassword();
             forgotPasswordForm.ShowDialog();
         }

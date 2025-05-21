@@ -75,7 +75,7 @@ namespace EDP_WinProject
 
         private void btnDiscard_Click(object sender, EventArgs e)
         {
-            this.Close(); // Closes the form without saving
+            this.Close();
         }
     }
 }

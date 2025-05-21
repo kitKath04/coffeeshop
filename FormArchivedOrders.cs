@@ -113,7 +113,7 @@ namespace EDP_WinProject
 
                         MessageBox.Show("Order restored successfully.");
 
-                        LoadArchivedOrders(); // Refresh the DataGridView
+                        LoadArchivedOrders();
                     }
                     catch (Exception ex)
                     {
@@ -152,7 +152,7 @@ namespace EDP_WinProject
                         worksheet.Cells[rowIndex, col + 1] = row.Cells[col].Value?.ToString();
                     }
 
-                    for (int col = 1; col <= 7; col++) // Loop through the 7 columns
+                    for (int col = 1; col <= 7; col++)
                     {
                         worksheet.Cells[rowIndex, col].HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
                     }
@@ -170,17 +170,13 @@ namespace EDP_WinProject
 
         private void exportbutton_Click(object sender, EventArgs e)
         {
-            // Define the template path
             string templatePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\ListofArchivedOrders.xlsx";
 
-            // Get the current date-time for the export filename
             DateTime now = DateTime.Now;
             string mydate = now.ToString("yyyy-MM-dd-HH-mm-ss");
 
-            // Define the path for the exported file
             string newFilePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\Reports\List of Archived Orders Report-" + mydate + ".xlsx";
 
-            // Call the export method with the correct DataGridView (replace 'ordersTable' with your DataGridView name)
             ExportDataGridViewToExcelTemplate(archivedordersTable, templatePath, newFilePath);
         }
 

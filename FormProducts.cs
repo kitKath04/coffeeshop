@@ -102,10 +102,8 @@ namespace EDP_WinProject
         {
             if (productsTable.SelectedRows.Count > 0)
             {
-                // Get the selected product ID
                 int productId = Convert.ToInt32(productsTable.SelectedRows[0].Cells["ID"].Value);
 
-                // Open the FormEditProducts with the selected product ID
                 FormEditProducts myform = new FormEditProducts(productId);
                 myform.Show();
                 this.Hide();
@@ -159,17 +157,13 @@ namespace EDP_WinProject
 
         private void exportbutton_Click(object sender, EventArgs e)
         {
-            // Define the template path
             string templatePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\ListofProducts.xlsx";
 
-            // Get the current date-time for the export filename
             DateTime now = DateTime.Now;
             string mydate = now.ToString("yyyy-MM-dd-HH-mm-ss");
 
-            // Define the path for the exported file
             string newFilePath = @"C:\Users\KathrynJoy\Documents\3rd Year\2nd Semester\Event Driven Programming\Reports\List of Products Report-" + mydate + ".xlsx";
 
-            // Call the export method with the correct DataGridView (replace 'ordersTable' with your DataGridView name)
             ExportDataGridViewToExcelTemplate(productsTable, templatePath, newFilePath);
         }
 
@@ -246,8 +240,8 @@ namespace EDP_WinProject
                         DataTable dt = new DataTable();
                         dt.Load(reader);
 
-                        categorycomboBox.DisplayMember = "category_name";   // what user sees
-                        categorycomboBox.ValueMember = "category_id";       // actual ID
+                        categorycomboBox.DisplayMember = "category_name";
+                        categorycomboBox.ValueMember = "category_id";
                         categorycomboBox.DataSource = dt;
                     }
                 }
@@ -292,12 +286,10 @@ namespace EDP_WinProject
                         MessageBox.Show("Product added successfully.");
                         LoadProducts();
 
-                        // Clear text fields
                         ProductNametextBox.Text = "";
                         PricetextBox.Text = "";
                         StocktextBox.Text = "";
 
-                        // Reset ComboBox to first item (optional)
                         if (categorycomboBox.Items.Count > 0)
                         {
                             categorycomboBox.SelectedIndex = 0;
@@ -313,18 +305,14 @@ namespace EDP_WinProject
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            // Check if a row is selected in the DataGridView
             if (productsTable.SelectedRows.Count > 0)
             {
-                // Get the selected product's ID
                 int productId = Convert.ToInt32(productsTable.SelectedRows[0].Cells["ID"].Value);
 
-                // Ask the user for confirmation to delete
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this product?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
-                    // Proceed with deleting the product
                     string connectionString = "server=localhost;user=root;password=kath2003;database=coffeeshop;";
 
                     using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -338,13 +326,10 @@ namespace EDP_WinProject
                             {
                                 cmd.Parameters.AddWithValue("@productId", productId);
 
-                                // Execute the delete query
                                 cmd.ExecuteNonQuery();
 
-                                // Inform the user that the product has been deleted
                                 MessageBox.Show("Product deleted successfully.");
 
-                                // Reload the products in the DataGridView
                                 LoadProducts();
                             }
                         }
@@ -357,7 +342,6 @@ namespace EDP_WinProject
             }
             else
             {
-                // If no row is selected, inform the user to select a product
                 MessageBox.Show("Please select a product to delete.");
             }
         }

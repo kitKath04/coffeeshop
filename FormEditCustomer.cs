@@ -14,7 +14,6 @@ namespace EDP_WinProject
 
             customerId = id;
 
-            // Populate form fields
             textBoxFirstName.Text = fname;
             textBoxLastName.Text = lname;
             textBoxEmail.Text = email;
@@ -22,20 +21,17 @@ namespace EDP_WinProject
             textBoxLastLogin.Text = lastLogin;
             textBoxLastLogin.ReadOnly = true;
 
-            // Status options
             comboBoxStatus.Items.Clear();
             comboBoxStatus.Items.Add("Active");
             comboBoxStatus.Items.Add("Inactive");
             comboBoxStatus.SelectedItem = status;
         }
 
-        // Discard button - return to customer list without saving
         private void btnDiscard_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        // Save button - updates customer data
         private void btnSave_Click(object sender, EventArgs e)
         {
             string fname = textBoxFirstName.Text.Trim();
